@@ -135,7 +135,7 @@ public partial class Player : CharacterBody3D
 		Node collider = WeaponRay.GetCollider() as Node;
 
 		if (collider is Monster monster)
-			monster.TakeDamage(WeaponDamage);
+			monster.TakeDamage(WeaponDamage, WeaponRay.GetCollisionPoint());
 
 		WeaponAnim?.Play("custom/shoot");
 		ShootSound?.Play();

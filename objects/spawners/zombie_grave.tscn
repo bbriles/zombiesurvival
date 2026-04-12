@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://fcopxpqwudtr"]
+
+[ext_resource type="Script" uid="uid://b1vuhdmbvcauh" path="res://objects/spawners/MonsterSpawner.cs" id="1_t058v"]
+[ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="2_eemao"]
+[ext_resource type="PackedScene" uid="uid://dkms02bbka0qa" path="res://models/world/grave-border.glb" id="2_jtu3a"]
+[ext_resource type="PackedScene" uid="uid://cc8gs7kagmsy5" path="res://models/world/grave.glb" id="3_eemao"]
+[ext_resource type="Texture2D" uid="uid://61uuud8n6ql3" path="res://particles/dirt_02.png" id="4_33wm7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6jvx2"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_min = 0.5
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x64fn"]
+transparency = 1
+albedo_color = Color(0.78398615, 0.42126328, 0, 1)
+albedo_texture = ExtResource("4_33wm7")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_qevsc"]
+material = SubResource("StandardMaterial3D_x64fn")
+size = Vector2(0.5, 0.5)
+
+[node name="ZombieGrave" type="Node3D" unique_id=1984928856 node_paths=PackedStringArray("SpawnPoint", "SpawnEffect")]
+script = ExtResource("1_t058v")
+MonsterScene = ExtResource("2_eemao")
+SpawnPoint = NodePath("SpawnPoint")
+SpawnEffect = NodePath("SpawnEffect")
+
+[node name="grave-border2" parent="." unique_id=1868380995 instance=ExtResource("2_jtu3a")]
+
+[node name="grave2" parent="." unique_id=545830159 instance=ExtResource("3_eemao")]
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=1806361125]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="SpawnEffect" type="GPUParticles3D" parent="." unique_id=2143987740]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_6jvx2")
+draw_pass_1 = SubResource("QuadMesh_qevsc")

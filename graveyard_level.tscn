@@ -5,10 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://jc5vn7cltp3v" path="res://models/world/Textures/texture_01.png" id="3_4afkm"]
 [ext_resource type="PackedScene" uid="uid://dly0lqp2u2ux" path="res://objects/world/large_crypt.tscn" id="4_rk4ww"]
 [ext_resource type="PackedScene" uid="uid://b1ehjlq2dnjqv" path="res://objects/world/small_crypt.tscn" id="5_2ft0s"]
-[ext_resource type="PackedScene" uid="uid://cc8gs7kagmsy5" path="res://models/world/grave.glb" id="6_2ft0s"]
 [ext_resource type="PackedScene" uid="uid://bso5qgy7hles2" path="res://models/world/gravestone-bevel.glb" id="7_igg6c"]
 [ext_resource type="PackedScene" uid="uid://bedqg6x5xwqmv" path="res://models/world/gravestone-cross-large.glb" id="8_pxg8r"]
-[ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="8_rk4ww"]
+[ext_resource type="PackedScene" uid="uid://fcopxpqwudtr" path="res://objects/spawners/zombie_grave.tscn" id="10_igg6c"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -88,23 +87,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 0, -12.4)
 [node name="Small-Crypt2" parent="Objects" unique_id=1774358316 instance=ExtResource("5_2ft0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -12.7)
 
-[node name="grave2" parent="." unique_id=545830159 instance=ExtResource("6_2ft0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
-
 [node name="gravestone-bevel2" parent="." unique_id=1989379031 instance=ExtResource("7_igg6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -7.7999997)
 
 [node name="gravestone-cross-large2" parent="." unique_id=1637037476 instance=ExtResource("8_pxg8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7.8)
 
-[node name="Zombie" parent="." unique_id=1961716468 instance=ExtResource("8_rk4ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9, 0, 0)
+[node name="ZombieGrave" parent="." unique_id=1984928856 instance=ExtResource("10_igg6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -7)
 
-[node name="Zombie2" parent="." unique_id=1531584835 instance=ExtResource("8_rk4ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9, 0, -16)
-
-[node name="Zombie3" parent="." unique_id=801259343 instance=ExtResource("8_rk4ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1, 0, -16)
-
-[node name="Zombie4" parent="." unique_id=584375640 instance=ExtResource("8_rk4ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9, 0, -16)
+[node name="ZombieGrave2" parent="." unique_id=168771358 instance=ExtResource("10_igg6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)

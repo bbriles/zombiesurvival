@@ -8,6 +8,7 @@ public partial class Monster : RigidBody3D
     [Export] public AudioStreamPlayer3D DieSound;
     [Export] public AudioStreamPlayer3D AttackSound;
     [Export] public AudioStreamPlayer3D AlertSound;
+    [Export] public GpuParticles3D HitParticles;
 
     [ExportGroup("Stats")]
     [Export] public float MaxHealth     = 100f;
@@ -119,7 +120,7 @@ public partial class Monster : RigidBody3D
     // -------------------------------------------------------------------------
     // State handlers
     // -------------------------------------------------------------------------
-    private void EnterChase()
+    public void EnterChase()
     {
         _state = State.Chase;
         PlayAnim(AnimWalk);
@@ -168,13 +169,20 @@ public partial class Monster : RigidBody3D
     /// <summary>
     /// Call this from the Bullet script (or an Area3D signal) to deal damage.
     /// </summary>
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Vector3 hitPoint)
     {
         if (_state == State.Dead)
             return;
 
         _health -= amount;
         GD.Print($"{Name} took {amount} damage — health: {_health}/{MaxHealth}");
+
+        if (HitParticles != null)
+        {
+            HitParticles.GlobalPosition = hitPoint;
+            HitParticles.Emitting = false; // Restart the particle effect
+            HitParticles.Emitting = true;
+        }
 
         if (_health <= 0f)
             Die();
