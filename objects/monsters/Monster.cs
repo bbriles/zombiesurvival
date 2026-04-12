@@ -4,13 +4,17 @@ public partial class Monster : RigidBody3D
 {
     [Export] public AnimationPlayer AnimPlayer;
     [Export] public Node3D MonsterModel;
+    [Export] public AudioStreamPlayer3D HurtSound;
+    [Export] public AudioStreamPlayer3D DieSound;
+    [Export] public AudioStreamPlayer3D AttackSound;
+    [Export] public AudioStreamPlayer3D AlertSound;
 
     [ExportGroup("Stats")]
     [Export] public float MaxHealth     = 100f;
     [Export] public float BulletDamage  = 25f;
 
     [ExportGroup("Range")]
-    [Export] public float AggroRange    = 5f;   // meters — starts chasing
+    [Export] public float AggroRange    = 10f;   // meters — starts chasing
     [Export] public float AttackRange   = 0.8f;  // meters — starts attacking
 
     [ExportGroup("Movement")]
@@ -81,7 +85,10 @@ public partial class Monster : RigidBody3D
         {
             case State.Idle:
                 if (distToPlayer <= AggroRange)
+                {    
+                    AlertSound?.Play();
                     EnterChase();
+                }
                 break;
 
             case State.Chase:
@@ -143,6 +150,7 @@ public partial class Monster : RigidBody3D
         
         GD.Print($"{Name} attacks player for {AttackDamage} damage!");
         // TODO: Call TakeDamage on the player and pass AttackDamage.
+        AttackSound?.Play();
     }
 
     private void EnterHurt()
@@ -150,6 +158,7 @@ public partial class Monster : RigidBody3D
         _state = State.Hurt;
         _stunTimer = HurtStunTime;
         PlayAnim(AnimHurt, true);
+        HurtSound?.Play();
     }   
 
     // -------------------------------------------------------------------------
@@ -188,6 +197,7 @@ public partial class Monster : RigidBody3D
         SetDeferred("collision_mask",  0);
 
         PlayAnim(AnimDie);
+        DieSound?.Play();
         GD.Print($"{Name} has died.");
     }
 

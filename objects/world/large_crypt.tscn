@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dly0lqp2u2ux"]
+
+[ext_resource type="PackedScene" uid="uid://cwns6muerx2w7" path="res://models/world/crypt-large.glb" id="1_c2ehh"]
+[ext_resource type="PackedScene" uid="uid://bm6hlqc4s11eu" path="res://models/world/crypt-large-roof.glb" id="2_030tx"]
+[ext_resource type="PackedScene" uid="uid://dyfs3t5uxvg8d" path="res://models/world/crypt-large-door.glb" id="3_fmmlu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2ehh"]
+size = Vector3(1.829834, 1.2729187, 2.3516235)
+
+[node name="Large-Crypt" type="StaticBody3D" unique_id=786974669]
+
+[node name="crypt-large2" parent="." unique_id=278691479 instance=ExtResource("1_c2ehh")]
+
+[node name="crypt-large-roof2" parent="." unique_id=970276303 instance=ExtResource("2_030tx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9220214, 0)
+
+[node name="crypt-large-door2" parent="." unique_id=1067479154 instance=ExtResource("3_fmmlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1538689212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01550293, 0.6563873, 0.021575928)
+shape = SubResource("BoxShape3D_c2ehh")

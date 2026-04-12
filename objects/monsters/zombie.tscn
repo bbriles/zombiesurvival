@@ -2,16 +2,24 @@
 
 [ext_resource type="Script" uid="uid://belbsbfshvqjt" path="res://objects/monsters/Monster.cs" id="1_tcokq"]
 [ext_resource type="PackedScene" uid="uid://5cq6ljlyb5ik" path="res://models/characters/character-zombie.tscn" id="2_tcokq"]
+[ext_resource type="AudioStream" uid="uid://datqypfrfaeh" path="res://objects/monsters/zombie-hurt.wav" id="3_dy86g"]
+[ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/zombie-die.wav" id="4_46mhc"]
+[ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/zombie-attack-01.wav" id="4_awj8q"]
+[ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/zombie-alert.wav" id="5_6ssa1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_be77x"]
 size = Vector3(0.48362732, 0.84472656, 0.3166504)
 
-[node name="Zombie" type="RigidBody3D" unique_id=1961716468 node_paths=PackedStringArray("AnimPlayer", "MonsterModel")]
+[node name="Zombie" type="RigidBody3D" unique_id=1961716468 node_paths=PackedStringArray("AnimPlayer", "MonsterModel", "HurtSound", "DieSound", "AttackSound", "AlertSound")]
 lock_rotation = true
 linear_damp = 10.0
 script = ExtResource("1_tcokq")
 AnimPlayer = NodePath("character-zombie2/AnimationPlayer")
 MonsterModel = NodePath("character-zombie2")
+HurtSound = NodePath("HurtSound")
+DieSound = NodePath("DieSound")
+AttackSound = NodePath("AttackSound")
+AlertSound = NodePath("AlertSound")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.44504547, -0.009155273)
@@ -21,5 +29,21 @@ shape = SubResource("BoxShape3D_be77x")
 
 [node name="arm-right" parent="character-zombie2/character-zombie/root/torso" parent_id_path=PackedInt32Array(1465111388, 355469658) index="1" unique_id=1740225024]
 transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.125, 0.15, 0.0024999976)
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="." unique_id=700839158]
+stream = ExtResource("3_dy86g")
+volume_db = -2.0
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="." unique_id=364658630]
+stream = ExtResource("4_awj8q")
+volume_db = -2.0
+
+[node name="AlertSound" type="AudioStreamPlayer3D" parent="." unique_id=1510409426]
+stream = ExtResource("5_6ssa1")
+volume_db = -2.0
+
+[node name="DieSound" type="AudioStreamPlayer3D" parent="." unique_id=1905125851]
+stream = ExtResource("4_46mhc")
+volume_db = -2.0
 
 [editable path="character-zombie2"]
