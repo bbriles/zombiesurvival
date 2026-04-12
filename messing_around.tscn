@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b6cv6d2gdrnja"]
+
+[ext_resource type="PackedScene" uid="uid://dqr3k70ws2clj" path="res://objects/player/Player.tscn" id="1_ql8i0"]
+[ext_resource type="PackedScene" uid="uid://c6mjmn74svivl" path="res://models/world/brick-wall.glb" id="2_cjrqy"]
+[ext_resource type="Script" uid="uid://df3746yo7mi7b" path="res://objects/player/Player.cs" id="2_hac35"]
+[ext_resource type="PackedScene" uid="uid://dqnoixgmtep6e" path="res://models/world/brick-wall-end.glb" id="3_hac35"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql8i0"]
+albedo_color = Color(1.2032688e-08, 0.34716833, 4.3317675e-07, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y7150"]
+material = SubResource("StandardMaterial3D_ql8i0")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hac35"]
+size = Vector3(50, 1, 50)
+
+[node name="TestLevel" type="Node3D" unique_id=876306209]
+
+[node name="Player" parent="." unique_id=820153746 instance=ExtResource("1_ql8i0")]
+script = ExtResource("2_hac35")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=774812138]
+transform = Transform3D(1, 0, 0, 0, 0.31162184, 0.9502062, 0, -0.9502062, 0.31162184, 0, 6.621146, 0)
+
+[node name="WorldObjects" type="Node3D" parent="." unique_id=184795939]
+
+[node name="brick-wall-end2" parent="WorldObjects" unique_id=1974051675 instance=ExtResource("3_hac35")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3709226, -0.0003643036, -9.063501)
+
+[node name="brick-wall-end3" parent="WorldObjects" unique_id=1181917028 instance=ExtResource("3_hac35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6139704, 0, -8.362569)
+
+[node name="brick-wall2" parent="WorldObjects" unique_id=1116715847 instance=ExtResource("2_cjrqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.383, 0, -8.367)
+
+[node name="Ground2" type="StaticBody3D" parent="." unique_id=658696410]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground2" unique_id=1295270167]
+mesh = SubResource("PlaneMesh_y7150")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2" unique_id=1508447332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_hac35")

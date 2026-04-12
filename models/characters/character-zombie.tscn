@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://5cq6ljlyb5ik"]
+
+[ext_resource type="PackedScene" uid="uid://c4s4dcgubkybi" path="res://models/characters/character-zombie.glb" id="1_jthjo"]
+
+[sub_resource type="Animation" id="Animation_jthjo"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character-zombie/root:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character-zombie/root/torso/head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.41887903, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q57h6"]
+_data = {
+&"hurt": SubResource("Animation_jthjo")
+}
+
+[node name="character-zombie" unique_id=1465111388 instance=ExtResource("1_jthjo")]
+
+[node name="character-zombie" parent="." index="0" unique_id=1745689055]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="torso" parent="character-zombie/root" parent_id_path=PackedInt32Array(2109143190) index="2" unique_id=355469658]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -1.4438228e-15, 0.223184, -7.219114e-16)
+
+[node name="arm-left" parent="character-zombie/root/torso" index="0" unique_id=244802163]
+transform = Transform3D(0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 0, 0, 1, 0.125, 0.15, 0.0024999976)
+
+[node name="arm-right" parent="character-zombie/root/torso" index="1" unique_id=1740225024]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, -0.125, 0.15, 0.0024999976)
+
+[node name="head" parent="character-zombie/root/torso" index="2" unique_id=917149810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22398208, 0)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1493124781]
+libraries/custom = SubResource("AnimationLibrary_q57h6")

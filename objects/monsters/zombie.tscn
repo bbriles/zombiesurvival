@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cage3u8o8faf5"]
+
+[ext_resource type="Script" uid="uid://belbsbfshvqjt" path="res://objects/monsters/Monster.cs" id="1_tcokq"]
+[ext_resource type="PackedScene" uid="uid://5cq6ljlyb5ik" path="res://models/characters/character-zombie.tscn" id="2_tcokq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_be77x"]
+size = Vector3(0.48362732, 0.84472656, 0.3166504)
+
+[node name="Zombie" type="RigidBody3D" unique_id=1961716468 node_paths=PackedStringArray("AnimPlayer", "MonsterModel")]
+lock_rotation = true
+linear_damp = 10.0
+script = ExtResource("1_tcokq")
+AnimPlayer = NodePath("character-zombie2/AnimationPlayer")
+MonsterModel = NodePath("character-zombie2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.44504547, -0.009155273)
+shape = SubResource("BoxShape3D_be77x")
+
+[node name="character-zombie2" parent="." unique_id=1465111388 instance=ExtResource("2_tcokq")]
+
+[node name="arm-right" parent="character-zombie2/character-zombie/root/torso" parent_id_path=PackedInt32Array(1465111388, 355469658) index="1" unique_id=1740225024]
+transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.125, 0.15, 0.0024999976)
+
+[editable path="character-zombie2"]
