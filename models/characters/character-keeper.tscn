@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cjqoqgtbp6k0n"]
+
+[ext_resource type="PackedScene" uid="uid://b0fkkuq2ix3mm" path="res://models/characters/character-keeper.glb" id="1_lixle"]
+
+[node name="character-keeper2" unique_id=360519734 instance=ExtResource("1_lixle")]
+
+[node name="arm-right" parent="character-keeper/root/torso" parent_id_path=PackedInt32Array(1218696473) index="1" unique_id=1121309833]
+transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.125, 0.15, 0.0024999976)
+
+[node name="arm-left" parent="character-keeper/root/torso" parent_id_path=PackedInt32Array(1218696473) index="2" unique_id=864514443]
+transform = Transform3D(0.70710665, 0.70710677, 0, -0.70710677, 0.70710665, 0, 0, 0, 1, 0.125, 0.15, 0.0024999976)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=843248453]
+autoplay = &"emote-no"

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b7jor3ui1ny2p"]
+
+[ext_resource type="PackedScene" uid="uid://duvyyif1ryvyk" path="res://models/world/pine.glb" id="1_gxeai"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jigp0"]
+
+[node name="Pine" type="StaticBody3D" unique_id=1342282758]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1564519738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_jigp0")
+
+[node name="pine2" parent="." unique_id=152320516 instance=ExtResource("1_gxeai")]

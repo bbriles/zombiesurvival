@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bcraoqrwksr3f"]
+
+[ext_resource type="PackedScene" uid="uid://cjqoqgtbp6k0n" path="res://models/characters/character-keeper.tscn" id="1_y7046"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7046"]
+size = Vector3(0.6, 0.90000004, 0.4)
+
+[node name="GraveKeeper" type="RigidBody3D" unique_id=556584128]
+lock_rotation = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=985234757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.44999993, -1.4901161e-08)
+shape = SubResource("BoxShape3D_y7046")
+
+[node name="character-keeper2" parent="." unique_id=360519734 instance=ExtResource("1_y7046")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010824367, 0)
+
+[editable path="character-keeper2"]

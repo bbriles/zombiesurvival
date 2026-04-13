@@ -19,9 +19,9 @@ public partial class Player : CharacterBody3D
 	[Export] public AudioStreamPlayer ShootSound;
 
 	[ExportGroup("Movement")]
-	[Export] public float WalkSpeed    = 5.0f;
-	[Export] public float RunSpeed     = 10.0f;
-	[Export] public float StrafeSpeed  = 4.0f;
+	[Export] public float WalkSpeed    = 2.5f;
+	[Export] public float RunSpeed     = 5.0f;
+	[Export] public float StrafeSpeed  = 2.0f;
 	[Export] public float JumpVelocity = 3.0f;
 
 	[ExportGroup("Turning")]

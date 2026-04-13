@@ -19,7 +19,7 @@ public partial class Monster : RigidBody3D
     [Export] public float AttackRange   = 0.8f;  // meters — starts attacking
 
     [ExportGroup("Movement")]
-    [Export] public float Speed      = 3f;  // meters/sec horizontal cap
+    [Export] public float Speed      = 2f;  // meters/sec horizontal cap
 
     [ExportGroup("Combat")]
     [Export] public float AttackInterval = 1.2f; // seconds between attacks

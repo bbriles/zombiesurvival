@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cc5n845rl2xy6"]
+
+[ext_resource type="PackedScene" uid="uid://bshtf3lqtchov" path="res://models/world/pine-crooked.glb" id="1_cwf8f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jigp0"]
+height = 1.9000001
+
+[node name="Pine-Crooked" type="StaticBody3D" unique_id=1342282758]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1564519738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95000005, 0)
+shape = SubResource("CylinderShape3D_jigp0")
+
+[node name="pine-crooked2" parent="." unique_id=516006052 instance=ExtResource("1_cwf8f")]
