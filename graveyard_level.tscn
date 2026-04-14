@@ -5,11 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://ddghw5ah1n605" path="res://models/world/Textures/floor_ground_grass.png" id="2_rk4ww"]
 [ext_resource type="PackedScene" uid="uid://dly0lqp2u2ux" path="res://objects/world/large_crypt.tscn" id="4_rk4ww"]
 [ext_resource type="PackedScene" uid="uid://b1ehjlq2dnjqv" path="res://objects/world/small_crypt.tscn" id="5_2ft0s"]
+[ext_resource type="PackedScene" uid="uid://cuwhejqr6vfgx" path="res://objects/world/iron-fence-curve.tscn" id="5_04s4b"]
+[ext_resource type="PackedScene" uid="uid://bc0xr34wiivcw" path="res://objects/world/iron-fence.tscn" id="5_poik8"]
 [ext_resource type="PackedScene" uid="uid://bso5qgy7hles2" path="res://models/world/gravestone-bevel.glb" id="7_igg6c"]
 [ext_resource type="PackedScene" uid="uid://bedqg6x5xwqmv" path="res://models/world/gravestone-cross-large.glb" id="8_pxg8r"]
 [ext_resource type="PackedScene" uid="uid://b7jor3ui1ny2p" path="res://objects/world/pine.tscn" id="8_wa6q5"]
 [ext_resource type="PackedScene" uid="uid://cc5n845rl2xy6" path="res://objects/world/pine-crooked.tscn" id="9_poik8"]
 [ext_resource type="PackedScene" uid="uid://fcopxpqwudtr" path="res://objects/spawners/zombie_grave.tscn" id="10_igg6c"]
+[ext_resource type="PackedScene" uid="uid://bxgt801sp2cj2" path="res://objects/world/iron-fence-column.tscn" id="12_wa6q5"]
 [ext_resource type="PackedScene" uid="uid://bcraoqrwksr3f" path="res://objects/npcs/grave_keeper.tscn" id="14_04s4b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igg6c"]
@@ -26,10 +29,11 @@ background_color = Color(0, 0.64536244, 0.81581676, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.71164036, 0.5502923, 0.45248723, 1)
 tonemap_mode = 2
-fog_enabled = true
-fog_light_color = Color(0.076784484, 0.18364689, 0.28999177, 1)
-fog_height = 0.4
-fog_height_density = 0.3475
+fog_light_energy = 1.1
+fog_density = 0.1
+fog_depth_curve = 1.6245033
+fog_depth_begin = 5.0
+fog_depth_end = 50.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tv3u"]
 albedo_texture = ExtResource("2_rk4ww")
@@ -48,18 +52,36 @@ light_indirect_energy = 0.25
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=820153746 instance=ExtResource("1_7c752")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.7771509, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.7771509, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1773977596]
 environment = SubResource("Environment_7c752")
 
 [node name="Ground" type="CSGBox3D" parent="." unique_id=213862804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.977234, -0.4945672, 0.55552673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.4945672, 0.41134644)
 use_collision = true
-size = Vector3(34.045532, 1, 26.28836)
+size = Vector3(38, 1, 38)
 material = SubResource("StandardMaterial3D_2tv3u")
 
 [node name="Walls" type="Node3D" parent="." unique_id=1061939629]
+
+[node name="IronFenceColumn" parent="Walls" unique_id=176482629 instance=ExtResource("12_wa6q5")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0, 0, 1)
+
+[node name="IronFenceColumn2" parent="Walls" unique_id=34563253 instance=ExtResource("12_wa6q5")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0, 0, -1)
+
+[node name="IronFenceCurve" parent="Walls" unique_id=209569291 instance=ExtResource("5_04s4b")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -4)
+
+[node name="IronFenceCurve2" parent="Walls" unique_id=1295545372 instance=ExtResource("5_04s4b")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 1.2423272, 0, 5.2)
+
+[node name="IronFence" parent="Walls" unique_id=792074470 instance=ExtResource("5_poik8")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.2, 0, -5.2)
+
+[node name="IronFence2" parent="Walls" unique_id=1923030626 instance=ExtResource("5_poik8")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.2, 0, 5.2000003)
 
 [node name="Objects" type="Node3D" parent="." unique_id=1714885111]
 
@@ -218,10 +240,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8239985, 0.1, -11.004085)
 [node name="Pine-Crooked29" parent="TreeWall" unique_id=640360107 instance=ExtResource("9_poik8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5239983, 0.1, 11.595916)
 
-[node name="Wall" type="Node3D" parent="." unique_id=723481130]
-
 [node name="GraveKeeper" parent="." unique_id=556584128 instance=ExtResource("14_04s4b")]
-transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -0.8, 0, -0.7)
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -2.4, 0, -0.7)
 
 [node name="Spawners" type="Node3D" parent="." unique_id=1832718237]
 
