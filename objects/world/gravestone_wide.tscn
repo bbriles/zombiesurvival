@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cie83cvmtb04r"]
+
+[ext_resource type="PackedScene" uid="uid://54ncnsbxj8ka" path="res://models/world/gravestone-wide.glb" id="1_lo4qu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h6r2"]
+size = Vector3(0.85, 0.5703522, 0.3)
+
+[node name="gravestone-wide" type="StaticBody3D" unique_id=490399836]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2117780460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2851761, 0)
+shape = SubResource("BoxShape3D_2h6r2")
+
+[node name="gravestone-wide2" parent="." unique_id=1798591828 instance=ExtResource("1_lo4qu")]
+
+[editable path="gravestone-wide2"]

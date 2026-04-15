@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cc8gs7kagmsy5" path="res://models/world/grave.glb" id="3_eemao"]
 [ext_resource type="Texture2D" uid="uid://61uuud8n6ql3" path="res://particles/dirt_02.png" id="4_33wm7"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jtu3a"]
+points = PackedVector3Array(0.34162143, 0, -0.32156482, 0.24519035, 0, -0.49551153, 0.3234122, 0.04425646, -0.3186495, 0.25355104, 0.08037803, 0.5006735, 0.2818214, 0, 0.51877266, 0.1486176, 0, -0.5573403, 0.21054319, 0.06526879, -0.4775338, 0.11531663, 0.114, -0.4160694, 0.12707826, 0.114, -0.35703442, 0.27778277, 0.08037803, -0.0310058, 0.25652686, 0.08037803, 0.43544346, 0.15556118, 0.114, -3.0636787e-05, 0.12707826, 0.114, 0.35697305, 0.11531663, 0.114, 0.41588658, 0.08825073, 0.114, 0.4564579, 0.047722757, 0.114, 0.48354608, 0.19559321, 0.08037803, 0.5306768, 0.12204769, 0.056743342, 0.6019804, 0.13706854, 0, 0.6203225, 0.09221852, 0, -0.59098786, 0.1467754, 0.06526879, -0.5183481, 0.047722757, 0.114, -0.48360735, 0.08825073, 0.114, -0.45664075, -3.2246113e-05, 0.114, 0.4930207, 0.07663083, 0.056743342, 0.6093902, 0.06827015, 0, 0.6316194, -3.2246113e-05, 0, -0.60933, -3.2246113e-05, 0.114, -0.49320358, -0.04785809, 0.114, 0.48354608, -0.09228298, 0, 0.59092647, -0.09228298, 0, -0.59098786, -0.04785809, 0.114, -0.48360735, -0.08831522, 0.114, 0.4564579, -0.17050482, 0, 0.53869396, -0.17050482, 0, -0.53875524, -0.08831522, 0.114, -0.45664075, -0.11538109, 0.114, 0.41588658, -0.21996029, 0.06526879, 0.39936656, -0.25460744, 0, 0.41734427, -0.22279441, 0, -0.46052784, -0.25900036, 0.08037803, -0.3010362, -0.11538109, 0.114, -0.4160694, -0.12714273, 0.114, 0.35697305, -0.3639338, 0.04425646, -0.13875073, -0.38214305, 0, -0.13571393, -0.36294186, 0, -0.18661037, -0.3512511, 0.04425646, -0.17227677, -0.26197618, 0.08037803, -0.2358062, -0.15562567, 0.114, -3.0636787e-05, -0.12714273, 0.114, -0.35703442)
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6jvx2"]
 direction = Vector3(0, 1, 0)
 initial_velocity_min = 2.0
@@ -32,6 +35,11 @@ SpawnEffect = NodePath("SpawnEffect")
 
 [node name="grave-border2" parent="." unique_id=1868380995 instance=ExtResource("2_jtu3a")]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1692157575]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=80953523]
+shape = SubResource("ConvexPolygonShape3D_jtu3a")
+
 [node name="grave2" parent="." unique_id=545830159 instance=ExtResource("3_eemao")]
 
 [node name="SpawnPoint" type="Marker3D" parent="." unique_id=1806361125]
@@ -45,3 +53,5 @@ one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_6jvx2")
 draw_pass_1 = SubResource("QuadMesh_qevsc")
+
+[editable path="grave2"]

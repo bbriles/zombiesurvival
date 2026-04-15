@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b5n738c7ymnqm"]
+
+[ext_resource type="PackedScene" uid="uid://oj4bocmoux4h" path="res://models/world/pumpkin-carved.glb" id="1_j88nd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_045xw"]
+size = Vector3(0.377492, 0.32114786, 0.33085936)
+
+[node name="pumpkin-carved" type="StaticBody3D" unique_id=2128270465]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1854239485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16057393, -0.023316324)
+shape = SubResource("BoxShape3D_045xw")
+
+[node name="pumpkin-carved2" parent="." unique_id=167133118 instance=ExtResource("1_j88nd")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2079461496]
+transform = Transform3D(1, 0, 0, 0, -0.9999507, 0.009930837, 0, -0.009930837, -0.9999507, 0, 0.10949838, -0.08574545)
+light_color = Color(0.8066993, 0.48027712, 0.046149462, 1)
+light_energy = 2.639
+light_specular = 2.5
+light_bake_mode = 1
+spot_range = 0.4
+
+[editable path="pumpkin-carved2"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://60pqw2ena1a6"]
+
+[ext_resource type="PackedScene" uid="uid://dq6i2bp7h45f7" path="res://models/world/hay-bale-bundled.glb" id="1_b3iv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq48p"]
+size = Vector3(0.60657585, 0.379842, 0.43117198)
+
+[node name="hay-bale-bundled" type="StaticBody3D" unique_id=225625174]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=744204069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189921, 0)
+shape = SubResource("BoxShape3D_oq48p")
+
+[node name="hay-bale-bundled2" parent="." unique_id=178510137 instance=ExtResource("1_b3iv0")]
+
+[editable path="hay-bale-bundled2"]

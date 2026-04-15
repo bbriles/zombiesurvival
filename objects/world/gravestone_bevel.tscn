@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://tjlcu7hm3uv1"]
+
+[ext_resource type="PackedScene" uid="uid://bso5qgy7hles2" path="res://models/world/gravestone-bevel.glb" id="1_e1nb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xem1c"]
+size = Vector3(0.45, 0.52930343, 0.25)
+
+[node name="gravestone-bevel" type="StaticBody3D" unique_id=1564295494]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1843345354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26465172, 0)
+shape = SubResource("BoxShape3D_xem1c")
+
+[node name="gravestone-bevel2" parent="." unique_id=1989379031 instance=ExtResource("1_e1nb4")]
+
+[editable path="gravestone-bevel2"]

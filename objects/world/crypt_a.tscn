@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dff105ffb2ox0"]
+
+[ext_resource type="PackedScene" uid="uid://dhfaprcpwiq02" path="res://models/world/crypt-a.glb" id="1_53qjk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cl6ys"]
+size = Vector3(0.62, 0.5224054, 1.1159999)
+
+[node name="crypt-a" type="StaticBody3D" unique_id=2044885314]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1348726244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2612027, 0)
+shape = SubResource("BoxShape3D_cl6ys")
+
+[node name="crypt-a2" parent="." unique_id=519496362 instance=ExtResource("1_53qjk")]
+
+[editable path="crypt-a2"]
