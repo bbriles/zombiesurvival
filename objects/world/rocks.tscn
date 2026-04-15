@@ -7,9 +7,9 @@ data = PackedVector3Array(0.0805, 0, 0.29099998, 0.3403, 0, 0.141, 0.3403, 0, -0
 
 [node name="rocks" type="StaticBody3D" unique_id=1572946558]
 
-[node name="rocks2" parent="." unique_id=1099881271 instance=ExtResource("1_wif2u")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="rocks2" unique_id=462011150]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=462011150]
 shape = SubResource("ConcavePolygonShape3D_dwq62")
+
+[node name="rocks2" parent="." unique_id=1099881271 instance=ExtResource("1_wif2u")]
 
 [editable path="rocks2"]

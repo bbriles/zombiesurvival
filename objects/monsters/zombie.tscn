@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://belbsbfshvqjt" path="res://objects/monsters/Monster.cs" id="1_tcokq"]
 [ext_resource type="PackedScene" uid="uid://5cq6ljlyb5ik" path="res://models/characters/character-zombie.tscn" id="2_tcokq"]
-[ext_resource type="AudioStream" uid="uid://datqypfrfaeh" path="res://objects/monsters/zombie-hurt.wav" id="3_dy86g"]
-[ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/zombie-die.wav" id="4_46mhc"]
-[ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/zombie-attack-01.wav" id="4_awj8q"]
-[ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/zombie-alert.wav" id="5_6ssa1"]
+[ext_resource type="AudioStream" uid="uid://datqypfrfaeh" path="res://objects/monsters/sounds/zombie-hurt.wav" id="3_dy86g"]
+[ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/sounds/zombie-die.wav" id="4_46mhc"]
+[ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/sounds/zombie-attack-01.wav" id="4_awj8q"]
+[ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/sounds/zombie-alert.wav" id="5_6ssa1"]
 [ext_resource type="Texture2D" uid="uid://by78uvvs71rfl" path="res://particles/blood_particle_01.png" id="7_j4d5h"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_be77x"]
-size = Vector3(0.48362732, 0.84472656, 0.3166504)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4d5h"]
+radius = 0.3305664
+height = 0.82500005
 
 [sub_resource type="Curve" id="Curve_y7f0w"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
@@ -50,10 +51,11 @@ AlertSound = NodePath("AlertSound")
 HitParticles = NodePath("HitParticles")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.44504547, -0.009155273)
-shape = SubResource("BoxShape3D_be77x")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.40754545, -0.009155273)
+shape = SubResource("CapsuleShape3D_j4d5h")
 
 [node name="character-zombie2" parent="." unique_id=1465111388 instance=ExtResource("2_tcokq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.026048392, 0)
 
 [node name="arm-right" parent="character-zombie2/character-zombie/root/torso" parent_id_path=PackedInt32Array(1465111388, 355469658) index="1" unique_id=1740225024]
 transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.125, 0.15, 0.0024999976)
@@ -77,7 +79,7 @@ volume_db = -2.0
 [node name="HitParticles" type="GPUParticles3D" parent="." unique_id=2020431850]
 emitting = false
 amount = 12
-lifetime = 0.24000000000000002
+lifetime = 0.24
 one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_ms8om")

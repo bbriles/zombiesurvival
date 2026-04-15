@@ -728,7 +728,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4, 0, -12.900001)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.191555, 0.005493164, -10.871307)
 
 [node name="pumpkin-carved" parent="Objects" unique_id=2128270465 instance=ExtResource("27_ihw10")]
-transform = Transform3D(-0.819152, 0, -0.5735765, 0, 1, 0, 0.5735765, 0, -0.819152, 11.4, 0, 5.3)
+transform = Transform3D(-0.9460571, 0, -0.32400006, 0, 1, 0, 0.32400006, 0, -0.9460571, 10.97394, 0, 5.1231213)
 
 [node name="pumpkin-carved2" parent="Objects" unique_id=1593831404 instance=ExtResource("27_ihw10")]
 transform = Transform3D(-0.9981252, 0, -0.061205417, 0, 1, 0, 0.061205417, 0, -0.9981252, 8.854883, 0.74294746, 6.200116)
