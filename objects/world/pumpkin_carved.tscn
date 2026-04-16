@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://oj4bocmoux4h" path="res://models/world/pumpkin-carved.glb" id="1_j88nd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_045xw"]
-size = Vector3(0.377492, 0.32114786, 0.33085936)
+size = Vector3(0.08265425, 0.064661965, 0.10981445)
 
 [node name="pumpkin-carved" type="StaticBody3D" unique_id=2128270465]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1854239485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16057393, -0.023316324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00031150132, 0.032330982, -0.01186613)
 shape = SubResource("BoxShape3D_045xw")
 
 [node name="pumpkin-carved2" parent="." unique_id=167133118 instance=ExtResource("1_j88nd")]

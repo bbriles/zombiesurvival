@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dly0lqp2u2ux"]
+
+[ext_resource type="Script" uid="uid://b1vuhdmbvcauh" path="res://objects/spawners/MonsterSpawner.cs" id="1_1e2go"]
+[ext_resource type="PackedScene" uid="uid://cwns6muerx2w7" path="res://models/world/crypt-large.glb" id="1_c2ehh"]
+[ext_resource type="PackedScene" uid="uid://bm6hlqc4s11eu" path="res://models/world/crypt-large-roof.glb" id="2_030tx"]
+[ext_resource type="PackedScene" uid="uid://btuswswm46lta" path="res://objects/monsters/skeleton.tscn" id="2_jd7px"]
+[ext_resource type="PackedScene" uid="uid://6hys4tbu05rn" path="res://objects/world/crypt_large_door.tscn" id="3_sgef7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgef7"]
+size = Vector3(0.2, 1.1, 2.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1e2go"]
+size = Vector3(1.353003, 1.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jd7px"]
+size = Vector3(0.28481445, 1.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jd7px"]
+albedo_color = Color(0.3854925, 0.38549247, 0.38549247, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jd7px"]
+material = SubResource("StandardMaterial3D_jd7px")
+size = Vector3(1.285, 0.01, 1.835)
+
+[node name="Large-Crypt" type="StaticBody3D" unique_id=1100036427 node_paths=PackedStringArray("SpawnPoint", "SpawnAnimPlayer")]
+script = ExtResource("1_1e2go")
+MonsterScene = ExtResource("2_jd7px")
+SpawnPoint = NodePath("SpawnPoint")
+SpawnAnimPlayer = NodePath("crypt-large-door2/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=415221964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.55, 0.050000012)
+shape = SubResource("BoxShape3D_sgef7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1659063395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75000006, 0.55, 0.050000012)
+shape = SubResource("BoxShape3D_sgef7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=318270944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023498476, 0.55, -1.0500001)
+shape = SubResource("BoxShape3D_1e2go")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=2080700168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.55, 1.15)
+shape = SubResource("BoxShape3D_jd7px")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=930194409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5575928, 0.55, 1.15)
+shape = SubResource("BoxShape3D_jd7px")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=368507421]
+mesh = SubResource("BoxMesh_jd7px")
+
+[node name="crypt-large2" parent="." unique_id=278691479 instance=ExtResource("1_c2ehh")]
+
+[node name="crypt-large-roof2" parent="." unique_id=970276303 instance=ExtResource("2_030tx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9220214, 0)
+
+[node name="crypt-large-door2" parent="." unique_id=1067479154 instance=ExtResource("3_sgef7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1)
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=1829510594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0431111)
+
+[editable path="crypt-large2"]
+[editable path="crypt-large-door2"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bb5ql3bsbvj74" path="res://models/world/pumpkin-tall-carved.glb" id="1_ah6b3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ah6b3"]
-size = Vector3(0.325492, 0.35967124, 0.32549202)
+size = Vector3(0.095289014, 0.088527024, 0.14185885)
 
 [node name="pumpkin-tall-carved" type="StaticBody3D" unique_id=907223066]
 
@@ -16,7 +16,7 @@ light_bake_mode = 1
 spot_range = 0.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1021980120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17983562, 0.026000008)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005578149, 0.044263512, 0.024284452)
 shape = SubResource("BoxShape3D_ah6b3")
 
 [node name="pumpkin-tall-carved2" parent="." unique_id=261515192 instance=ExtResource("1_ah6b3")]

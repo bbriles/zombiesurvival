@@ -12,8 +12,7 @@ public partial class Monster : RigidBody3D
 
     [ExportGroup("Stats")]
     [Export] public float MaxHealth     = 100f;
-    [Export] public float BulletDamage  = 25f;
-
+    
     [ExportGroup("Range")]
     [Export] public float AggroRange    = 10f;   // meters — starts chasing
     [Export] public float AttackRange   = 0.8f;  // meters — starts attacking
@@ -22,7 +21,7 @@ public partial class Monster : RigidBody3D
     [Export] public float Speed      = 2f;  // meters/sec horizontal cap
 
     [ExportGroup("Combat")]
-    [Export] public float AttackInterval = 1.2f; // seconds between attacks
+    [Export] public float AttackInterval = 1f; // seconds between attacks
     [Export] public float AttackDamage   = 10f;  // TODO: hook into player health
     [Export] public float HurtStunTime = 0.2f; // seconds to pause after getting hit
 
