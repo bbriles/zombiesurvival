@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bhkndjt2gle32"]
+
+[ext_resource type="PackedScene" uid="uid://dlp3pqerogcor" path="res://models/world/candle.glb" id="1_smrx8"]
+[ext_resource type="Shader" uid="uid://cchsl8grxi8jo" path="res://shaders/candle_flame.gdshader" id="2_t5jw8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smrx8"]
+render_priority = 0
+shader = ExtResource("2_t5jw8")
+shader_parameter/flame_height = 1.8
+shader_parameter/taper_factor = 1.0
+shader_parameter/deviation = Vector3(0, 0, 0)
+shader_parameter/turbulence_speed = 3.0
+shader_parameter/turbulence_force = 2.0
+shader_parameter/inner_color = Color(1, 1, 1, 1)
+shader_parameter/outer_color = Color(1, 0.75, 0, 1)
+shader_parameter/bottom_color = Color(0, 0.1, 1, 1)
+shader_parameter/emission = 5.0
+shader_parameter/max_alpha = 0.4
+shader_parameter/border_width = 0.75
+shader_parameter/bottom_color_fade_y_end = 0.2
+shader_parameter/bottom_color_fade_y_start = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_dsomq"]
+material = SubResource("ShaderMaterial_smrx8")
+radius = 0.05
+height = 0.1
+
+[node name="candle" type="Node3D" unique_id=376307128]
+
+[node name="candle" parent="." unique_id=336813587 instance=ExtResource("1_smrx8")]
+
+[node name="flame" type="MeshInstance3D" parent="." unique_id=979643645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26139903, 0)
+mesh = SubResource("SphereMesh_dsomq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=198725097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37628695, 0)
+light_color = Color(1, 0.54901963, 0.16470589, 1)
+light_energy = 1.2
+distance_fade_enabled = true
+omni_range = 4.0
+omni_attenuation = 1.5
+omni_shadow_mode = 0

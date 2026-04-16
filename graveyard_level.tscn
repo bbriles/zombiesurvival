@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://bfgn18tw1swjs" path="res://objects/world/pine_fall_crooked.tscn" id="33_qyjx8"]
 [ext_resource type="PackedScene" uid="uid://brgrvnuyyrk3g" path="res://objects/world/pine_fall.tscn" id="34_lb1u4"]
 [ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="35_h4iet"]
+[ext_resource type="PackedScene" uid="uid://bhkndjt2gle32" path="res://objects/world/candle.tscn" id="38_lb1u4"]
+[ext_resource type="PackedScene" uid="uid://c7yu8x2wk2jpk" path="res://objects/world/candle_multiple.tscn" id="39_he2n1"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -74,7 +76,6 @@ material = SubResource("StandardMaterial3D_igg6c")
 
 [node name="SpookyMoonLight" type="DirectionalLight3D" parent="." unique_id=1054058508]
 transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 5.811947, 0)
-visible = false
 light_color = Color(0.23921569, 0.2901961, 0.41960785, 1)
 light_energy = 0.5
 light_indirect_energy = 0.25
@@ -83,6 +84,7 @@ shadow_blur = 3.0
 
 [node name="BrightLight" type="DirectionalLight3D" parent="." unique_id=1393330020]
 transform = Transform3D(0.43051112, -0.88286155, -0.18765806, 0, -0.20791174, 0.9781475, -0.9025852, -0.42110342, -0.08950832, 0, 5.811947, 0)
+visible = false
 shadow_enabled = true
 shadow_blur = 3.0
 
@@ -1031,3 +1033,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -1.8)
 
 [node name="Zombie4" parent="Monsters" unique_id=1375597991 instance=ExtResource("35_h4iet")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 26.7, 0, -0.90000004)
+
+[node name="Lights" type="Node3D" parent="." unique_id=1500807874]
+
+[node name="candle" parent="Lights" unique_id=376307128 instance=ExtResource("38_lb1u4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4994657, 0.56597525, -2.5980477)
+
+[node name="candle-multiple" parent="Lights" unique_id=1415328701 instance=ExtResource("39_he2n1")]
+transform = Transform3D(0.1517094, 0, -0.98842514, 0, 1, 0, 0.98842514, 0, 0.1517094, -0.21500868, 0, -0.9965352)
+
+[node name="candle-multiple2" parent="Lights" unique_id=1468643850 instance=ExtResource("39_he2n1")]
+transform = Transform3D(-0.9888423, 0, -0.14896582, 0, 1, 0, 0.14896582, 0, -0.9888423, -0.18899554, 0, 0.9596467)
