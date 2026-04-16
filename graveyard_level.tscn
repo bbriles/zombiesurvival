@@ -40,12 +40,17 @@
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
-background_color = Color(0, 0.64536244, 0.81581676, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.71164036, 0.5502923, 0.45248723, 1)
+ambient_light_color = Color(0.039215688, 0.039215688, 0.078431375, 1)
+ambient_light_energy = 0.05
 tonemap_mode = 2
-fog_light_energy = 1.1
-fog_density = 0.1
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0.101960786, 0.101960786, 0.18039216, 1)
+fog_light_energy = 0.8
+fog_density = 0.06
 fog_depth_curve = 1.6245033
 fog_depth_begin = 5.0
 fog_depth_end = 50.0
@@ -67,11 +72,19 @@ material = SubResource("StandardMaterial3D_igg6c")
 
 [node name="GraveyardLevel" type="Node3D" unique_id=1924571447]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1054058508]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 5.811947, 0)
-light_energy = 0.25
+[node name="SpookyMoonLight" type="DirectionalLight3D" parent="." unique_id=1054058508]
+transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 5.811947, 0)
+visible = false
+light_color = Color(0.23921569, 0.2901961, 0.41960785, 1)
+light_energy = 0.5
 light_indirect_energy = 0.25
 shadow_enabled = true
+shadow_blur = 3.0
+
+[node name="BrightLight" type="DirectionalLight3D" parent="." unique_id=1393330020]
+transform = Transform3D(0.43051112, -0.88286155, -0.18765806, 0, -0.20791174, 0.9781475, -0.9025852, -0.42110342, -0.08950832, 0, 5.811947, 0)
+shadow_enabled = true
+shadow_blur = 3.0
 
 [node name="Player" parent="." unique_id=820153746 instance=ExtResource("1_7c752")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.7771509, 0, 0)
@@ -791,13 +804,16 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0, -4.5)
 
 [node name="hay-bale-bundled" parent="Objects" unique_id=225625174 instance=ExtResource("23_e3r01")]
-transform = Transform3D(1.9318516, 0, 0.5176381, 0, 2, 0, -0.5176381, 0, 1.9318516, 10.6, 0, 5.7999997)
+transform = Transform3D(1.4488888, 0, 0.3882286, 0, 1.5, 0, -0.3882286, 0, 1.4488888, 10.6, 0, 5.7999997)
 
 [node name="hay-bale-bundled4" parent="Objects" unique_id=1267590910 instance=ExtResource("23_e3r01")]
-transform = Transform3D(1.532089, 0, 1.2855754, 0, 2, 0, -1.2855754, 0, 1.532089, 11.6, 0, 6.2999997)
+transform = Transform3D(1.1490667, 0, 0.9641814, 0, 1.5, 0, -0.9641814, 0, 1.1490667, 11.6, 0, 5.8999996)
 
 [node name="hay-bale-bundled5" parent="Objects" unique_id=2100317231 instance=ExtResource("23_e3r01")]
-transform = Transform3D(-1.732051, 0, 1, 0, 2, 0, -1, 0, -1.732051, 11.200001, 0.70000005, 6)
+transform = Transform3D(-1.299038, 0, 0.7500001, 0, 1.5, 0, -0.7500001, 0, -1.299038, 10.900002, 0.50000006, 5.9)
+
+[node name="hay-bale-bundled12" parent="Objects" unique_id=1372021162 instance=ExtResource("23_e3r01")]
+transform = Transform3D(-0.38822842, 0, 1.4488888, 0, 1.5, 0, -1.4488888, 0, -0.38822842, 11.800002, 0.50000006, 5.9)
 
 [node name="hay-bale-bundled7" parent="Objects" unique_id=1755686251 instance=ExtResource("23_e3r01")]
 transform = Transform3D(-1.2855755, 0, 1.532089, 0, 2, 0, -1.532089, 0, -1.2855755, 32.547256, 0, 0.5153078)
@@ -809,13 +825,19 @@ transform = Transform3D(-1.8126159, 0, 0.8452363, 0, 2, 0, -0.8452363, 0, -1.812
 transform = Transform3D(-0.17431122, 0, -1.9923894, 0, 2, 0, 1.9923894, 0, -0.17431122, 32.574947, 0.70000005, -0.11300272)
 
 [node name="hay-bale-bundled2" parent="Objects" unique_id=1593110096 instance=ExtResource("23_e3r01")]
-transform = Transform3D(1.8793855, 0, 0.68404037, 0, 2, 0, -0.68404037, 0, 1.8793855, 9.2, 0, 6.1999993)
+transform = Transform3D(1.409539, 0, 0.51303023, 0, 1.5, 0, -0.51303023, 0, 1.409539, 9.2, 0, 6.1999993)
 
 [node name="hay-bale-bundled6" parent="Objects" unique_id=1567606582 instance=ExtResource("23_e3r01")]
-transform = Transform3D(1.8126158, 0, 0.8452366, 0, 2, 0, -0.8452366, 0, 1.8126158, 9.7, 0, 6.9999995)
+transform = Transform3D(1.3594617, 0, 0.6339274, 0, 1.5, 0, -0.6339274, 0, 1.3594617, 10.599999, 0, 6.4999995)
+
+[node name="hay-bale-bundled10" parent="Objects" unique_id=197263303 instance=ExtResource("23_e3r01")]
+transform = Transform3D(1.4772117, 0, -0.26047224, 0, 1.5, 0, 0.26047224, 0, 1.4772117, 9.099999, 0, 7.0999994)
 
 [node name="hay-bale-bundled3" parent="Objects" unique_id=745766379 instance=ExtResource("23_e3r01")]
-transform = Transform3D(1.6383042, 0, 1.1471529, 0, 2, 0, -1.1471529, 0, 1.6383042, 9.699999, 0.70000005, 6.3999996)
+transform = Transform3D(1.3594617, 0, 0.6339274, 0, 1.5000002, 0, -0.6339274, 0, 1.3594617, 9.9, 0.5, 6.0999994)
+
+[node name="hay-bale-bundled11" parent="Objects" unique_id=846287720 instance=ExtResource("23_e3r01")]
+transform = Transform3D(0.26047233, 0, -1.4772116, 0, 1.5000001, 0, 1.4772116, 0, 0.26047233, 9.099999, 0.5, 6.4999995)
 
 [node name="gravestone-cross-large3" parent="Objects" unique_id=1279065519 instance=ExtResource("15_83jlc")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.0000005, 0, 4.5)
@@ -895,17 +917,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 22.1
 [node name="bench" parent="Objects" unique_id=1965733506 instance=ExtResource("26_4fent")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.8, 0, -6.6)
 
-[node name="pumpkin-tall-carved" parent="Objects" unique_id=907223066 instance=ExtResource("30_6rsjo")]
-transform = Transform3D(-0.99847466, 0, -0.055211514, 0, 1, 0, 0.055211514, 0, -0.99847466, 9.805368, 0.005432844, 5.4899673)
-
 [node name="pumpkin-tall-carved4" parent="Objects" unique_id=182105893 instance=ExtResource("30_6rsjo")]
 transform = Transform3D(-0.03202127, 0, -0.9994873, 0, 1, 0, 0.9994873, 0, -0.03202127, 31.90537, 0.005432844, -0.31003267)
-
-[node name="pumpkin-tall-carved2" parent="Objects" unique_id=357535519 instance=ExtResource("30_6rsjo")]
-transform = Transform3D(-0.99847466, 0, -0.055211514, 0, 1, 0, 0.055211514, 0, -0.99847466, 9.805368, 0.005432844, 5.4899673)
-
-[node name="pumpkin-tall-carved3" parent="Objects" unique_id=333787721 instance=ExtResource("30_6rsjo")]
-transform = Transform3D(-0.9965911, 0.06139696, -0.055107363, 0.061303303, 0.99811345, 0.0033898188, 0.05521152, 0, -0.9984748, 10.440241, 0.7181046, 5.758466)
 
 [node name="rocks-tall" parent="Objects" unique_id=1464084575 instance=ExtResource("31_e3r01")]
 transform = Transform3D(-0.8637651, 0, 0.5038947, 0, 1, 0, -0.5038947, 0, -0.8637651, -0.30307198, 0.005431175, -6.6741176)
@@ -924,9 +937,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.591555, 0.005493164, -10.8
 
 [node name="pumpkin-carved" parent="Objects" unique_id=2128270465 instance=ExtResource("27_ihw10")]
 transform = Transform3D(-0.19243625, 0, -0.9813095, 0, 1, 0, 0.9813095, 0, -0.19243625, 31.77394, 0, 0.12312126)
-
-[node name="pumpkin-carved2" parent="Objects" unique_id=1593831404 instance=ExtResource("27_ihw10")]
-transform = Transform3D(-0.9981252, 0, -0.061205417, 0, 1, 0, 0.061205417, 0, -0.9981252, 8.854883, 0.74294746, 6.200116)
 
 [node name="pine-fall-crooked" parent="Objects" unique_id=2133722459 instance=ExtResource("33_qyjx8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.1, -3.1000004)

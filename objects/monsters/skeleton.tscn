@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://belbsbfshvqjt" path="res://objects/monsters/Monster.cs" id="1_kc7uc"]
 [ext_resource type="PackedScene" uid="uid://d34nep8518a2h" path="res://models/characters/character-skeleton.glb" id="2_yrmtk"]
 [ext_resource type="AnimationLibrary" uid="uid://cmvy1q1odjmch" path="res://objects/monsters/custom_anim.res" id="3_k28oo"]
-[ext_resource type="AudioStream" uid="uid://datqypfrfaeh" path="res://objects/monsters/sounds/zombie-hurt.wav" id="3_yrmtk"]
+[ext_resource type="AudioStream" uid="uid://b0li38f4d6nyg" path="res://objects/monsters/sounds/skeleton-hurt.wav" id="4_2mvh4"]
 [ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/sounds/zombie-attack-01.wav" id="4_k28oo"]
 [ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/sounds/zombie-alert.wav" id="5_gjk7o"]
 [ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/sounds/zombie-die.wav" id="6_wjdjj"]
@@ -59,23 +59,23 @@ shape = SubResource("CapsuleShape3D_j4d5h")
 
 [node name="character-skeleton2" parent="." unique_id=1440400791 instance=ExtResource("2_yrmtk")]
 
-[node name="character-skeleton" parent="character-skeleton2" index="0" unique_id=1628474121]
+[node name="character-skeleton" parent="character-skeleton2" index="0" unique_id=1770201076]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="head" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1576065350) index="0" unique_id=859128968]
+[node name="head" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1530590639) index="0" unique_id=38837574]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.22398205, 0)
 
-[node name="arm-right" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1576065350) index="1" unique_id=793667999]
+[node name="arm-right" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1530590639) index="1" unique_id=1351582942]
 transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, -0.125, 0.17, 0.0024999976)
 
-[node name="arm-left" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1576065350) index="2" unique_id=2136123987]
+[node name="arm-left" parent="character-skeleton2/character-skeleton/root/torso" parent_id_path=PackedInt32Array(1440400791, 1530590639) index="2" unique_id=1842120193]
 transform = Transform3D(0.7071067, 0.7071068, 0, -0.7071068, 0.7071067, 0, 0, 0, 1, 0.125, 0.17, 0.0024999976)
 
-[node name="AnimationPlayer" parent="character-skeleton2" index="1" unique_id=2027458777]
+[node name="AnimationPlayer" parent="character-skeleton2" index="1" unique_id=488988136]
 libraries/custom = ExtResource("3_k28oo")
 
 [node name="HurtSound" type="AudioStreamPlayer3D" parent="." unique_id=700839158]
-stream = ExtResource("3_yrmtk")
+stream = ExtResource("4_2mvh4")
 volume_db = -2.0
 
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="." unique_id=364658630]
