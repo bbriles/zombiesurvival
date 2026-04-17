@@ -129,6 +129,9 @@ public partial class Player : CharacterBody3D
 
 	private void Shoot()
 	{
+		WeaponAnim?.Play("custom/shoot");
+		ShootSound?.Play();
+		
 		if (WeaponRay == null || !WeaponRay.IsColliding())
 			return;
 
@@ -136,8 +139,5 @@ public partial class Player : CharacterBody3D
 
 		if (collider is Monster monster)
 			monster.TakeDamage(WeaponDamage, WeaponRay.GetCollisionPoint());
-
-		WeaponAnim?.Play("custom/shoot");
-		ShootSound?.Play();
 	}
 }
