@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://d34nep8518a2h" path="res://models/characters/character-skeleton.glb" id="2_yrmtk"]
 [ext_resource type="AnimationLibrary" uid="uid://cmvy1q1odjmch" path="res://objects/monsters/custom_anim.res" id="3_k28oo"]
 [ext_resource type="AudioStream" uid="uid://b0li38f4d6nyg" path="res://objects/monsters/sounds/skeleton-hurt.wav" id="4_2mvh4"]
-[ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/sounds/zombie-attack-01.wav" id="4_k28oo"]
-[ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/sounds/zombie-alert.wav" id="5_gjk7o"]
-[ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/sounds/zombie-die.wav" id="6_wjdjj"]
+[ext_resource type="AudioStream" uid="uid://b7ei4gv4ll5sf" path="res://objects/monsters/sounds/skeleton-attack-01.wav" id="5_2mvh4"]
+[ext_resource type="AudioStream" uid="uid://c41lxwx1k35b0" path="res://objects/monsters/sounds/skeleton-alert.wav" id="6_yrmtk"]
+[ext_resource type="AudioStream" uid="uid://d202ck32q8433" path="res://objects/monsters/sounds/skeleton-die.wav" id="7_k28oo"]
 [ext_resource type="Texture2D" uid="uid://blcdh01xatinh" path="res://particles/spray_01.png" id="8_2mvh4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4d5h"]
@@ -79,20 +79,20 @@ stream = ExtResource("4_2mvh4")
 volume_db = -2.0
 
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="." unique_id=364658630]
-stream = ExtResource("4_k28oo")
+stream = ExtResource("5_2mvh4")
 volume_db = -2.0
 
 [node name="AlertSound" type="AudioStreamPlayer3D" parent="." unique_id=1510409426]
-stream = ExtResource("5_gjk7o")
+stream = ExtResource("6_yrmtk")
 volume_db = -2.0
 
 [node name="DieSound" type="AudioStreamPlayer3D" parent="." unique_id=1905125851]
-stream = ExtResource("6_wjdjj")
+stream = ExtResource("7_k28oo")
 volume_db = -2.0
 
 [node name="HitParticles" type="GPUParticles3D" parent="." unique_id=2020431850]
 emitting = false
-amount = 12
+amount = 20
 lifetime = 0.24
 one_shot = true
 explosiveness = 0.8

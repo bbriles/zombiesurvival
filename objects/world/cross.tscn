@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cs4k5ybihtguc"]
+
+[ext_resource type="PackedScene" uid="uid://ctrr25vquvpnd" path="res://models/world/cross.glb" id="1_gskhb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iu5o8"]
+size = Vector3(0.5608921, 1.0495527, 0.25)
+
+[node name="cross" type="StaticBody3D" unique_id=2132956076]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1393843304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0058088303, 0.52477634, 0)
+shape = SubResource("BoxShape3D_iu5o8")
+
+[node name="cross2" parent="." unique_id=1847413628 instance=ExtResource("1_gskhb")]
+
+[editable path="cross2"]

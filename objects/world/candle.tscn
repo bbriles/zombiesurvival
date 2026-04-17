@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://bhkndjt2gle32"]
 
 [ext_resource type="PackedScene" uid="uid://dlp3pqerogcor" path="res://models/world/candle.glb" id="1_smrx8"]
+[ext_resource type="Texture2D" uid="uid://ebboxuehcy26" path="res://models/world/Textures/colormap.png" id="2_2yvuo"]
 [ext_resource type="Shader" uid="uid://cchsl8grxi8jo" path="res://shaders/candle_flame.gdshader" id="2_t5jw8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsomq"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_2yvuo")
+emission_enabled = true
+emission = Color(1, 0.54901963, 0.16470589, 1)
+emission_energy_multiplier = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smrx8"]
 render_priority = 0
@@ -29,6 +38,9 @@ height = 0.1
 
 [node name="candle" parent="." unique_id=336813587 instance=ExtResource("1_smrx8")]
 
+[node name="candle" parent="candle" index="0" unique_id=54272262]
+surface_material_override/0 = SubResource("StandardMaterial3D_dsomq")
+
 [node name="flame" type="MeshInstance3D" parent="." unique_id=979643645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26139903, 0)
 mesh = SubResource("SphereMesh_dsomq")
@@ -41,3 +53,5 @@ distance_fade_enabled = true
 omni_range = 4.0
 omni_attenuation = 1.5
 omni_shadow_mode = 0
+
+[editable path="candle"]

@@ -36,7 +36,7 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_j7p6a"]
 material = SubResource("StandardMaterial3D_1okwu")
-size = Vector2(0.1, 0.25)
+size = Vector2(0.25, 0.25)
 
 [node name="Zombie" type="RigidBody3D" unique_id=1961716468 node_paths=PackedStringArray("AnimPlayer", "MonsterModel", "HurtSound", "DieSound", "AttackSound", "AlertSound", "HitParticles")]
 lock_rotation = true
@@ -49,6 +49,7 @@ DieSound = NodePath("DieSound")
 AttackSound = NodePath("AttackSound")
 AlertSound = NodePath("AlertSound")
 HitParticles = NodePath("HitParticles")
+MaxHealth = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.40754545, -0.009155273)
@@ -78,8 +79,8 @@ volume_db = -2.0
 
 [node name="HitParticles" type="GPUParticles3D" parent="." unique_id=2020431850]
 emitting = false
-amount = 12
-lifetime = 0.24
+amount = 24
+lifetime = 0.2
 one_shot = true
 explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_ms8om")

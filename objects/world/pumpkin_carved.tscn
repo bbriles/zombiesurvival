@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://b5n738c7ymnqm"]
 
 [ext_resource type="PackedScene" uid="uid://oj4bocmoux4h" path="res://models/world/pumpkin-carved.glb" id="1_j88nd"]
+[ext_resource type="Texture2D" uid="uid://ebboxuehcy26" path="res://models/world/Textures/colormap.png" id="2_045xw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_045xw"]
 size = Vector3(0.08265425, 0.064661965, 0.10981445)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q68ck"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_045xw")
+emission = Color(0.92412007, 0.47367573, 5.7756904e-07, 1)
+emission_energy_multiplier = 0.05
 
 [node name="pumpkin-carved" type="StaticBody3D" unique_id=2128270465]
 
@@ -13,8 +21,11 @@ shape = SubResource("BoxShape3D_045xw")
 
 [node name="pumpkin-carved2" parent="." unique_id=167133118 instance=ExtResource("1_j88nd")]
 
+[node name="pumpkin-carved" parent="pumpkin-carved2" index="0" unique_id=707497276]
+surface_material_override/0 = SubResource("StandardMaterial3D_q68ck")
+
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2079461496]
-transform = Transform3D(1, 0, 0, 0, -0.9999507, 0.009930837, 0, -0.009930837, -0.9999507, 0, 0.10949838, -0.08574545)
+transform = Transform3D(1, 0, 0, 0, -0.9999507, 0.009930837, 0, -0.009930837, -0.9999507, 0, 0.10949838, -0.051588275)
 light_color = Color(0.8066993, 0.48027712, 0.046149462, 1)
 light_energy = 2.639
 light_specular = 2.5

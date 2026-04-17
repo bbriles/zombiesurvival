@@ -3,13 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://5lkrhc7hevsi" path="res://models/world/bench.glb" id="1_il35q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k630i"]
-size = Vector3(0.80715257, 0.5259796, 0.45511842)
+size = Vector3(0.80715257, 0.23642579, 0.37817886)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_il35q"]
+size = Vector3(0.80715257, 0.29643553, 0.14028993)
 
 [node name="bench" type="StaticBody3D" unique_id=1965733506]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=548597060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2629898, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11821289, -0.00036369264)
 shape = SubResource("BoxShape3D_k630i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1214594663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38594937, -0.14365992)
+shape = SubResource("BoxShape3D_il35q")
 
 [node name="bench2" parent="." unique_id=269260446 instance=ExtResource("1_il35q")]
 
