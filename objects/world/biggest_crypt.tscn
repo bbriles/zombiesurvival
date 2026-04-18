@@ -59,8 +59,9 @@ transform = Transform3D(-0.17364807, 0, -0.9848078, 0, 1, 0, 0.9848078, 0, -0.17
 
 [node name="SpawnPoint" type="Marker3D" parent="." unique_id=1829510594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0431111)
+visible = false
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1234108175]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SpawnPoint" unique_id=1234108175]
 stream = ExtResource("6_pp1hw")
 
 [editable path="crypt-large2"]
