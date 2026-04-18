@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="41_kvvcw"]
 [ext_resource type="PackedScene" uid="uid://bhkndjt2gle32" path="res://objects/world/candle.tscn" id="42_npc86"]
 [ext_resource type="PackedScene" uid="uid://c7yu8x2wk2jpk" path="res://objects/world/candle_multiple.tscn" id="43_240r8"]
+[ext_resource type="PackedScene" uid="uid://bed07qblpce7b" path="res://ui/PauseScreen.tscn" id="44_c62yr"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -76,8 +77,9 @@ size = Vector2(4, 2)
 [sub_resource type="PlaneMesh" id="PlaneMesh_83jlc"]
 material = SubResource("StandardMaterial3D_igg6c")
 
-[node name="GraveyardLevel" type="Node3D" unique_id=1924571447]
+[node name="GraveyardLevel" type="Node3D" unique_id=1924571447 node_paths=PackedStringArray("PauseScreen")]
 script = ExtResource("1_jbaln")
+PauseScreen = NodePath("CanvasLayer/PauseScreen")
 
 [node name="SpookyMoonLight" type="DirectionalLight3D" parent="." unique_id=1054058508]
 transform = Transform3D(0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, -0.35355338, 0.6123724, 0, 5.811947, 0)
@@ -1070,3 +1072,7 @@ transform = Transform3D(0.64318866, 0, 0.76570773, 0, 1, 0, -0.76570773, 0, 0.64
 
 [node name="candle-multiple3" parent="Lights" unique_id=766276640 instance=ExtResource("43_240r8")]
 transform = Transform3D(0.68178135, 0, 0.73155606, 0, 1, 0, -0.73155606, 0, 0.68178135, 13.908101, 0.015737206, -10.577163)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1554221407]
+
+[node name="PauseScreen" parent="CanvasLayer" unique_id=709586517 instance=ExtResource("44_c62yr")]
