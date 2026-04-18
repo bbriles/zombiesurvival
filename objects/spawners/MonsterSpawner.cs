@@ -24,7 +24,7 @@ public partial class MonsterSpawner : Node3D
 
 		// Create the monster instance and add it to the scene.
 		var monsterInstance = MonsterScene.Instantiate<Monster>();
-		GetTree().Root.AddChild(monsterInstance);
+		AddChild(monsterInstance);
 		monsterInstance.GlobalPosition = SpawnPoint.GlobalPosition;
 
 		monsterInstance.EnterChase();
