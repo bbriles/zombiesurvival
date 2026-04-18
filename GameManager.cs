@@ -6,6 +6,7 @@ public partial class GameManager : Node
     public static GameManager Instance { get; private set; }
 
     public static Player Player { get; set; }
+    public static string CurrentScenePath { get; set; }
 
     public override void _Ready()
     {

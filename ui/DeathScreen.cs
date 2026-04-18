@@ -20,13 +20,15 @@ public partial class DeathScreen : Control
 
     private void OnRestartPressed()
     {
+		GD.Print("Restarting level...");
         GetTree().Paused = false;
         Input.MouseMode = Input.MouseModeEnum.Captured;
-        //GetTree().ChangeSceneToFile(GameScenePath);
+        GetTree().ChangeSceneToFile(GameManager.CurrentScenePath);
     }
 
     private void OnQuitPressed()
     {
+		GD.Print("Quitting game...");
         GetTree().Quit();
     }
 }

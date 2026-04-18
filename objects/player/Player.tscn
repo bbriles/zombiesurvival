@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
 [ext_resource type="Shader" uid="uid://tyj5likds60j" path="res://shaders/injury_overlay.gdshader" id="5_lalkq"]
 [ext_resource type="Script" uid="uid://bhyo3fkh0mdsh" path="res://objects/player/InjuryOverlay.cs" id="6_t2uaq"]
+[ext_resource type="PackedScene" uid="uid://bij7uhxbpoubl" path="res://ui/DeathScreen.tscn" id="7_45d0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sllil"]
 
@@ -50,7 +51,7 @@ orientation = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t2uaq"]
 shader = ExtResource("5_lalkq")
-shader_parameter/damage_amount = 0.9230000438425
+shader_parameter/damage_amount = 0.0
 shader_parameter/vignette_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_1fx2d"]
@@ -117,7 +118,7 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "InjuryOverlay")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "InjuryOverlay", "DeathScreen")]
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
@@ -127,6 +128,7 @@ MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
 MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
 InjuryOverlay = NodePath("CanvasLayer/InjuryOverlay")
+DeathScreen = NodePath("CanvasLayer/DeathScreen")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=173386712]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
@@ -196,6 +198,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_t2uaq")
+
+[node name="DeathScreen" parent="CanvasLayer" unique_id=1101984776 instance=ExtResource("7_45d0k")]
+visible = false
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1923491865]
 libraries/ = SubResource("AnimationLibrary_6o7ef")

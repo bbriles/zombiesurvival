@@ -43,6 +43,7 @@ public partial class Player : CharacterBody3D
 
 	[ExportGroup("Health")]
 	[Export] public InjuryOverlay InjuryOverlay;
+	[Export] public DeathScreen DeathScreen;
 	[Export] public float MaxHealth = 100f;
 	[Export] public float CurrentHealth = 100f;
 	[Export] public float HealAmount = 5f; // amount to heal on each timer tick
@@ -167,10 +168,8 @@ public partial class Player : CharacterBody3D
 
 	private void Die()
 	{
-		// TODO: Show death overlay, play sound, etc.
-		// For simplicity, just reset health and the injury overlay.
-		CurrentHealth = MaxHealth;
-		InjuryOverlay.Reset();
+		// TODO: play sound, etc.
+		DeathScreen.ShowDeathScreen();
 	}
 
 	private void Shoot()
