@@ -41,6 +41,12 @@ public partial class Player : CharacterBody3D
 	[Export] public float BobAmplitudeX = 0.01f; // horizontal drift
 	[Export] public float BobLerpSpeed = 10.0f;  // smoothing speed
 
+	[ExportGroup("Health")]
+	[Export] public InjuryOverlay InjuryOverlay;
+	[Export] public float MaxHealth = 100f;
+	[Export] public float CurrentHealth = 100f;
+	[Export] public float HealAmount = 5f; // amount to heal on each timer tick
+
 	private float _gravity;
 	private float _fireCooldown = 0f;
 	private float _lightCounter = 0f;
@@ -149,6 +155,24 @@ public partial class Player : CharacterBody3D
 		 ApplyWeaponBob((float)dt);
 	}
 
+	public void TakeDamage(float amount)
+	{
+		CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0f, MaxHealth);
+		float severity = 1f - (CurrentHealth / MaxHealth);
+		InjuryOverlay.TakeDamage(severity);
+
+		if (CurrentHealth <= 0f)
+			Die();
+	}
+
+	private void Die()
+	{
+		// TODO: Show death overlay, play sound, etc.
+		// For simplicity, just reset health and the injury overlay.
+		CurrentHealth = MaxHealth;
+		InjuryOverlay.Reset();
+	}
+
 	private void Shoot()
 	{
 		WeaponAnim?.Play("custom/shoot");
@@ -198,4 +222,11 @@ public partial class Player : CharacterBody3D
 		// Lerp for smooth transition in and out of bobbing
 		WeaponPivot.Position = WeaponPivot.Position.Lerp(targetPosition, dt * BobLerpSpeed);
 	}
+
+	public void OnHealTimerTimeOut()
+	{
+		CurrentHealth = Mathf.Clamp(CurrentHealth + HealAmount, 0f, MaxHealth);
+		InjuryOverlay.Heal(HealAmount / MaxHealth); // Convert heal amount to severity (0.0 to 1.0)	
+	}
+
 }

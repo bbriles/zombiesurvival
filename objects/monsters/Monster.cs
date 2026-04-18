@@ -22,7 +22,7 @@ public partial class Monster : RigidBody3D
 
     [ExportGroup("Combat")]
     [Export] public float AttackInterval = 1f; // seconds between attacks
-    [Export] public float AttackDamage   = 10f;  // TODO: hook into player health
+    [Export] public float AttackDamage   = 20f; 
     [Export] public float HurtStunTime = 0.2f; // seconds to pause after getting hit
 
     [ExportGroup("Death")]
@@ -149,7 +149,7 @@ public partial class Monster : RigidBody3D
         PlayAnim(attackAnim, true);
         
         GD.Print($"{Name} attacks player for {AttackDamage} damage!");
-        // TODO: Call TakeDamage on the player and pass AttackDamage.
+        GameManager.Player.TakeDamage(AttackDamage);
         AttackSound?.Play();
     }
 

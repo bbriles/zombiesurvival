@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b0g2knum5m5x3" path="res://models/weapons/Textures/crosshair038.png" id="3_1fx2d"]
 [ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_h7ooo"]
 [ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
+[ext_resource type="Shader" uid="uid://tyj5likds60j" path="res://shaders/injury_overlay.gdshader" id="5_lalkq"]
+[ext_resource type="Script" uid="uid://bhyo3fkh0mdsh" path="res://objects/player/InjuryOverlay.cs" id="6_t2uaq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sllil"]
 
@@ -45,6 +47,11 @@ flip_faces = true
 size = Vector2(0.5, 0.5)
 center_offset = Vector3(0, 0, 0.15)
 orientation = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2uaq"]
+shader = ExtResource("5_lalkq")
+shader_parameter/damage_amount = 0.9230000438425
+shader_parameter/vignette_color = Color(0.6, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_1fx2d"]
 length = 0.001
@@ -110,7 +117,7 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "InjuryOverlay")]
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
@@ -119,6 +126,7 @@ ShootSound = NodePath("ShootAudioPlayer")
 MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
 MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
+InjuryOverlay = NodePath("CanvasLayer/InjuryOverlay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=173386712]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
@@ -163,7 +171,7 @@ target_position = Vector3(0, 0, -100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1234037841]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=860857202]
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer" unique_id=860857202]
 modulate = Color(1, 1, 1, 0.39215687)
 anchors_preset = 8
 anchor_left = 0.5
@@ -180,9 +188,23 @@ pivot_offset = Vector2(32, 32)
 texture = ExtResource("3_1fx2d")
 stretch_mode = 2
 
+[node name="InjuryOverlay" type="ColorRect" parent="CanvasLayer" unique_id=1396387438]
+material = SubResource("ShaderMaterial_t2uaq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_t2uaq")
+
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1923491865]
 libraries/ = SubResource("AnimationLibrary_6o7ef")
 libraries/custom = SubResource("AnimationLibrary_lalkq")
 
 [node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=331635567]
 stream = ExtResource("4_6o7ef")
+
+[node name="HealTimer" type="Timer" parent="." unique_id=1940526795]
+autostart = true
+
+[connection signal="timeout" from="HealTimer" to="." method="OnHealTimerTimeOut"]
