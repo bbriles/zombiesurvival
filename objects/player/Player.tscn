@@ -51,7 +51,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Weapon:rotation")
+tracks/0/path = NodePath("Head/WeaponPivot/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Weapon:position")
+tracks/1/path = NodePath("Head/WeaponPivot/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -83,7 +83,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Weapon:rotation")
+tracks/0/path = NodePath("Head/WeaponPivot/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,7 +95,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Weapon:position")
+tracks/1/path = NodePath("Head/WeaponPivot/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -110,13 +110,14 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay")]
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
+WeaponPivot = NodePath("Head/WeaponPivot")
 ShootSound = NodePath("ShootAudioPlayer")
-MuzzleFlash = NodePath("Head/MuzzlePoint/MuzzleFlash")
-MuzzleFlashLight = NodePath("Head/MuzzlePoint/MuzzleFlashLight")
+MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
+MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=173386712]
@@ -132,24 +133,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63709164, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=413186981]
 
-[node name="Weapon" parent="Head" unique_id=1471396285 instance=ExtResource("1_o6ghu")]
+[node name="WeaponPivot" type="Node3D" parent="Head" unique_id=474927095]
+
+[node name="Weapon" parent="Head/WeaponPivot" unique_id=1471396285 instance=ExtResource("1_o6ghu")]
 transform = Transform3D(0.4976704, 0, 0.04820952, 0, 0.5, 0, -0.048209522, 0, 0.49767038, 0.2761488, -0.16103578, -0.3107285)
 
-[node name="MuzzlePoint" type="Marker3D" parent="Head" unique_id=827856383]
+[node name="MuzzlePoint" type="Marker3D" parent="Head/WeaponPivot" unique_id=827856383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2615139, -0.1537708, -0.4473514)
 
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/MuzzlePoint" unique_id=998903420]
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/WeaponPivot/MuzzlePoint" unique_id=998903420]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0043231547, -0.250812)
 emitting = false
 amount = 1
 lifetime = 0.01
 one_shot = true
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_lalkq")
 draw_pass_1 = SubResource("PlaneMesh_t2uaq")
 
-[node name="MuzzleFlashLight" type="SpotLight3D" parent="Head/MuzzlePoint" unique_id=903345650]
-visible = false
+[node name="MuzzleFlashLight" type="SpotLight3D" parent="Head/WeaponPivot/MuzzlePoint" unique_id=903345650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.11044514)
 light_color = Color(1, 1, 0.40392157, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+spot_range = 3.0
 
 [node name="WeaponRay" type="RayCast3D" parent="Head" unique_id=1316109182]
 target_position = Vector3(0, 0, -100)

@@ -28,6 +28,7 @@ public partial class Player : CharacterBody3D
 	[Export] public float TurnSpeed = 2.2f;
 
 	[ExportGroup("Shooting")]
+	[Export] public Node3D WeaponPivot;
 	[Export] public AudioStreamPlayer ShootSound;
 	[Export] public GpuParticles3D MuzzleFlash;
 	[Export] public SpotLight3D MuzzleFlashLight;
@@ -35,10 +36,16 @@ public partial class Player : CharacterBody3D
 	[Export] public RayCast3D WeaponRay;
 	[Export] public float WeaponDamage = 25f;
 	[Export] public float FireRate = 0.25f;  // seconds between shots
+	[Export] public float BobFrequency = 1.5f;   // cycles per second
+	[Export] public float BobAmplitudeY = 0.02f; // vertical height
+	[Export] public float BobAmplitudeX = 0.01f; // horizontal drift
+	[Export] public float BobLerpSpeed = 10.0f;  // smoothing speed
 
 	private float _gravity;
 	private float _fireCooldown = 0f;
 	private float _lightCounter = 0f;
+	private Vector3 _initialWeaponPosition;
+	private float _bobTime = 0f;
 
 	public override void _Ready()
 	{
@@ -46,6 +53,9 @@ public partial class Player : CharacterBody3D
 		
 		// Cache project gravity so we don't call the server every frame.
 		_gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
+
+		// Cache the resting position of the weapon
+		_initialWeaponPosition = WeaponPivot.Position;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -133,6 +143,10 @@ public partial class Player : CharacterBody3D
 			Shoot();
 			_fireCooldown = FireRate;
 		}
+		// -----------------------------------------------------------------
+		// 9. Weapon Bobbing and Sway
+		// -----------------------------------------------------------------
+		 ApplyWeaponBob((float)dt);
 	}
 
 	private void Shoot()
@@ -154,5 +168,34 @@ public partial class Player : CharacterBody3D
 
 		if (collider is Monster monster)
 			monster.TakeDamage(WeaponDamage, WeaponRay.GetCollisionPoint());
+	}
+
+	private void ApplyWeaponBob(float dt)
+	{
+		// Only bob on horizontal movement
+		float speed = new Vector2(Velocity.X, Velocity.Z).Length();
+		bool isMoving = speed > 0.1f && IsOnFloor();
+
+		Vector3 targetPosition;
+
+		if (isMoving)
+		{
+			_bobTime += dt * BobFrequency * Mathf.Pi * 2f;
+
+			float bobY = Mathf.Sin(_bobTime) * BobAmplitudeY;
+			// X uses a doubled frequency for a figure-8 style sway
+			float bobX = Mathf.Sin(_bobTime * 0.5f) * BobAmplitudeX;
+
+			targetPosition = _initialWeaponPosition + new Vector3(bobX, bobY, 0f);
+		}
+		else
+		{
+			// Smoothly reset _bobTime toward the nearest full cycle to avoid snapping
+			_bobTime = Mathf.Lerp(_bobTime, Mathf.Round(_bobTime / (Mathf.Pi * 2f)) * Mathf.Pi * 2f, dt * BobLerpSpeed);
+			targetPosition = _initialWeaponPosition;
+		}
+
+		// Lerp for smooth transition in and out of bobbing
+		WeaponPivot.Position = WeaponPivot.Position.Lerp(targetPosition, dt * BobLerpSpeed);
 	}
 }
