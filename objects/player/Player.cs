@@ -16,7 +16,6 @@ public partial class Player : CharacterBody3D
 {
 	[Export] public Camera3D Camera;
 	[Export] public AnimationPlayer WeaponAnim;
-	[Export] public AudioStreamPlayer ShootSound;
 
 	[ExportGroup("Movement")]
 	[Export] public float WalkSpeed    = 2.5f;
@@ -29,12 +28,17 @@ public partial class Player : CharacterBody3D
 	[Export] public float TurnSpeed = 2.2f;
 
 	[ExportGroup("Shooting")]
+	[Export] public AudioStreamPlayer ShootSound;
+	[Export] public GpuParticles3D MuzzleFlash;
+	[Export] public SpotLight3D MuzzleFlashLight;
+	[Export] public float MuzzleFlashLightLength = 0.1f;
 	[Export] public RayCast3D WeaponRay;
 	[Export] public float WeaponDamage = 25f;
 	[Export] public float FireRate = 0.25f;  // seconds between shots
 
 	private float _gravity;
 	private float _fireCooldown = 0f;
+	private float _lightCounter = 0f;
 
 	public override void _Ready()
 	{
@@ -120,6 +124,10 @@ public partial class Player : CharacterBody3D
 		// -----------------------------------------------------------------
 		if (_fireCooldown > 0f)
 			_fireCooldown -= dt;
+		if (_lightCounter > 0f)
+			_lightCounter -= dt;
+		else if (MuzzleFlashLight != null && MuzzleFlashLight.Visible)
+			MuzzleFlashLight.Visible = false;
 		if (Input.IsActionJustPressed("shoot") && _fireCooldown <= 0f)
 		{
 			Shoot();
@@ -131,6 +139,13 @@ public partial class Player : CharacterBody3D
 	{
 		WeaponAnim?.Play("custom/shoot");
 		ShootSound?.Play();
+
+		if(MuzzleFlash != null && MuzzleFlashLight != null)
+		{ 
+			MuzzleFlash.Emitting = true;
+			MuzzleFlashLight.Visible = true;
+			_lightCounter = MuzzleFlashLightLength;
+		}
 		
 		if (WeaponRay == null || !WeaponRay.IsColliding())
 			return;

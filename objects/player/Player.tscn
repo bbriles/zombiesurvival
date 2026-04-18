@@ -3,20 +3,48 @@
 [ext_resource type="PackedScene" uid="uid://c16d7h2awr5yw" path="res://models/weapons/blaster-b.glb" id="1_o6ghu"]
 [ext_resource type="Script" uid="uid://df3746yo7mi7b" path="res://objects/player/Player.cs" id="1_sllil"]
 [ext_resource type="Texture2D" uid="uid://b0g2knum5m5x3" path="res://models/weapons/Textures/crosshair038.png" id="3_1fx2d"]
+[ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_h7ooo"]
 [ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sllil"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o6ghu"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fx2d"]
-direction = Vector3(0, 0, -1)
-spread = 15.0
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
-scale_min = 0.049999997
-scale_max = 0.14999999
-color = Color(0.94509804, 0.8901961, 0.13333334, 1)
+[sub_resource type="Curve" id="Curve_h7ooo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lalkq"]
+curve = SubResource("Curve_h7ooo")
+
+[sub_resource type="Curve" id="Curve_t2uaq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.17673385), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_45d0k"]
+curve = SubResource("Curve_t2uaq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lalkq"]
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_45d0k")
+alpha_curve = SubResource("CurveTexture_lalkq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lalkq"]
+transparency = 1
+albedo_color = Color(1, 1, 0.2901961, 1)
+albedo_texture = ExtResource("3_h7ooo")
+emission_enabled = true
+emission = Color(0.8352941, 0.972549, 0, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t2uaq"]
+material = SubResource("StandardMaterial3D_lalkq")
+flip_faces = true
+size = Vector2(0.5, 0.5)
+center_offset = Vector3(0, 0, 0.15)
+orientation = 0
 
 [sub_resource type="Animation" id="Animation_1fx2d"]
 length = 0.001
@@ -82,11 +110,13 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "ShootSound", "WeaponRay")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay")]
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
 ShootSound = NodePath("ShootAudioPlayer")
+MuzzleFlash = NodePath("Head/MuzzlePoint/MuzzleFlash")
+MuzzleFlashLight = NodePath("Head/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=173386712]
@@ -108,10 +138,18 @@ transform = Transform3D(0.4976704, 0, 0.04820952, 0, 0.5, 0, -0.048209522, 0, 0.
 [node name="MuzzlePoint" type="Marker3D" parent="Head" unique_id=827856383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2615139, -0.1537708, -0.4473514)
 
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/MuzzlePoint" unique_id=397353484]
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/MuzzlePoint" unique_id=998903420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0043231547, -0.250812)
+emitting = false
+amount = 1
+lifetime = 0.01
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_lalkq")
+draw_pass_1 = SubResource("PlaneMesh_t2uaq")
+
+[node name="MuzzleFlashLight" type="SpotLight3D" parent="Head/MuzzlePoint" unique_id=903345650]
 visible = false
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_1fx2d")
+light_color = Color(1, 1, 0.40392157, 1)
 
 [node name="WeaponRay" type="RayCast3D" parent="Head" unique_id=1316109182]
 target_position = Vector3(0, 0, -100)
