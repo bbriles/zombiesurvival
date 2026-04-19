@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://barrc6euq5bgx"]
 
-[ext_resource type="Script" uid="uid://d17ybnxcukqrk" path="res://objects/bullet/Bullet.cs" id="1_a8u18"]
+[ext_resource type="Script" uid="uid://d17ybnxcukqrk" path="res://objects/projectiles/Bullet.cs" id="1_a8u18"]
 [ext_resource type="PackedScene" uid="uid://b8kg5vc1pn6is" path="res://models/weapons/bullet-foam-tip-thick.glb" id="2_a8u18"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d2sno"]

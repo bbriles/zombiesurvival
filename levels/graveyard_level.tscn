@@ -29,10 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://60pqw2ena1a6" path="res://objects/world/hay_bale_bundled.tscn" id="27_ijb2o"]
 [ext_resource type="PackedScene" uid="uid://dbusl8k5fd00s" path="res://objects/world/gravestone_broken.tscn" id="28_hdr1o"]
 [ext_resource type="PackedScene" uid="uid://0rrpvqdxbqvd" path="res://objects/world/bench.tscn" id="29_7kvwx"]
-[ext_resource type="PackedScene" uid="uid://dgswtwxqfkkxo" path="res://objects/world/pumpkin_tall_carved.tscn" id="30_a233u"]
 [ext_resource type="PackedScene" uid="uid://dbb1qnfykmnex" path="res://objects/world/rocks_tall.tscn" id="31_dcem6"]
 [ext_resource type="PackedScene" uid="uid://ieo7dfqi14sq" path="res://objects/world/rocks.tscn" id="32_a2lsh"]
-[ext_resource type="PackedScene" uid="uid://b5n738c7ymnqm" path="res://objects/world/pumpkin_carved.tscn" id="33_e87o3"]
 [ext_resource type="PackedScene" uid="uid://bfgn18tw1swjs" path="res://objects/world/pine_fall_crooked.tscn" id="34_6h8ik"]
 [ext_resource type="PackedScene" uid="uid://brgrvnuyyrk3g" path="res://objects/world/pine_fall.tscn" id="35_4fppw"]
 [ext_resource type="PackedScene" uid="uid://c50cxfeogrimc" path="res://objects/world/cross_wood.tscn" id="36_e84cd"]
@@ -43,7 +41,13 @@
 [ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="41_kvvcw"]
 [ext_resource type="PackedScene" uid="uid://bhkndjt2gle32" path="res://objects/world/candle.tscn" id="42_npc86"]
 [ext_resource type="PackedScene" uid="uid://c7yu8x2wk2jpk" path="res://objects/world/candle_multiple.tscn" id="43_240r8"]
+[ext_resource type="PackedScene" uid="uid://vg0o6j0i0cts" path="res://objects/world/altar_wood.tscn" id="44_2pk1k"]
 [ext_resource type="PackedScene" uid="uid://bed07qblpce7b" path="res://ui/PauseScreen.tscn" id="44_c62yr"]
+[ext_resource type="PackedScene" uid="uid://d14w42ngcffxv" path="res://models/world/detail-bowl.glb" id="45_3ypon"]
+[ext_resource type="PackedScene" uid="uid://ce60tv0sukl0n" path="res://models/world/shovel.glb" id="45_s0do1"]
+[ext_resource type="PackedScene" uid="uid://copvt3gxyrrp2" path="res://models/world/detail-chalice.glb" id="46_nn62f"]
+[ext_resource type="PackedScene" uid="uid://4f67d8cwwgrj" path="res://models/world/detail-plate.glb" id="47_tki4a"]
+[ext_resource type="PackedScene" uid="uid://bg716f0d7cmr7" path="res://objects/world/lantern_candle.tscn" id="48_3ypon"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -66,6 +70,9 @@ fog_depth_end = 50.0
 albedo_texture = ExtResource("3_s0do1")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fii6p"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igg6c"]
 albedo_texture = ExtResource("4_fii6p")
 uv1_triplanar = true
@@ -73,6 +80,9 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_pxg8r"]
 material = SubResource("StandardMaterial3D_igg6c")
 size = Vector2(4, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c62yr"]
+material = SubResource("StandardMaterial3D_igg6c")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_83jlc"]
 material = SubResource("StandardMaterial3D_igg6c")
@@ -101,12 +111,60 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.7
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1773977596]
 environment = SubResource("Environment_7c752")
 
-[node name="Ground" type="CSGBox3D" parent="." unique_id=213862804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.4945672, 1.9113464)
+[node name="CSG-Boxes" type="Node3D" parent="." unique_id=1358346698]
+
+[node name="Ground" type="CSGBox3D" parent="CSG-Boxes" unique_id=213862804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.250004, -0.19456717, -14.079157)
 use_collision = true
-size = Vector3(112, 1, 107)
+size = Vector3(73.9, 0.4, 27.5)
 material = SubResource("StandardMaterial3D_2tv3u")
-metadata/_edit_lock_ = true
+
+[node name="Ground2" type="CSGBox3D" parent="CSG-Boxes" unique_id=1002656897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.250004, -0.19456719, 15.471058)
+use_collision = true
+size = Vector3(73.9, 0.4, 30.2)
+material = SubResource("StandardMaterial3D_2tv3u")
+
+[node name="Ground3" type="CSGBox3D" parent="CSG-Boxes" unique_id=975558537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.100006, -0.19456717, 0.02105841)
+use_collision = true
+size = Vector3(32.2, 0.4, 0.7)
+material = SubResource("StandardMaterial3D_2tv3u")
+
+[node name="Ground4" type="CSGBox3D" parent="CSG-Boxes" unique_id=1055614064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2500019, -0.19456719, 0.02105835)
+use_collision = true
+size = Vector3(39.9, 0.4, 0.7)
+material = SubResource("StandardMaterial3D_2tv3u")
+
+[node name="Hole-Wall1" type="CSGBox3D" parent="CSG-Boxes" unique_id=1725351646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.15, -1.2, 0.049999982)
+use_collision = true
+size = Vector3(0.3, 1.6, 1.9)
+material = SubResource("StandardMaterial3D_fii6p")
+
+[node name="Hole-Floor" type="CSGBox3D" parent="CSG-Boxes" unique_id=385541656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, -2.1000001, 0.05000013)
+use_collision = true
+size = Vector3(7.9, 0.2, 2.3)
+
+[node name="Hole-Wall2" type="CSGBox3D" parent="CSG-Boxes" unique_id=1227052524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.55, -1.2, 0.049999982)
+use_collision = true
+size = Vector3(0.3, 1.6, 1.9)
+material = SubResource("StandardMaterial3D_fii6p")
+
+[node name="Hole-Wall3" type="CSGBox3D" parent="CSG-Boxes" unique_id=173647015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3, -1.2, 1.0999999)
+use_collision = true
+size = Vector3(7.8, 1.6, 0.2)
+material = SubResource("StandardMaterial3D_fii6p")
+
+[node name="Hole-Wall4" type="CSGBox3D" parent="CSG-Boxes" unique_id=1127401875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3, -1.2, -1.0000002)
+use_collision = true
+size = Vector3(7.8, 1.6, 0.2)
+material = SubResource("StandardMaterial3D_fii6p")
 
 [node name="Path" type="Node3D" parent="." unique_id=581583198]
 metadata/_edit_lock_ = true
@@ -196,8 +254,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.8
 mesh = SubResource("PlaneMesh_pxg8r")
 
 [node name="Path25" type="MeshInstance3D" parent="Path" unique_id=747622572]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19.84502, 0.01, -1.5646219e-07)
-mesh = SubResource("PlaneMesh_pxg8r")
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18.84502, 0.01, -1.5646219e-07)
+mesh = SubResource("PlaneMesh_c62yr")
 
 [node name="Path22" type="MeshInstance3D" parent="Path" unique_id=196066372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.545021, 0.01, 8)
@@ -843,7 +901,7 @@ transform = Transform3D(1.3594617, 0, 0.6339274, 0, 1.5, 0, -0.6339274, 0, 1.359
 transform = Transform3D(1.4772117, 0, -0.26047224, 0, 1.5, 0, 0.26047224, 0, 1.4772117, 9.099999, 0, 7.0999994)
 
 [node name="hay-bale-bundled3" parent="Objects" unique_id=745766379 instance=ExtResource("27_ijb2o")]
-transform = Transform3D(1.3594617, 0, 0.6339274, 0, 1.5000002, 0, -0.6339274, 0, 1.3594617, 9.9, 0.5, 6.0999994)
+transform = Transform3D(1.3594617, 0, 0.6339274, 0, 1.5000002, 0, -0.6339274, 0, 1.3594617, 9.9, 0.5, 5.9999995)
 
 [node name="hay-bale-bundled11" parent="Objects" unique_id=846287720 instance=ExtResource("27_ijb2o")]
 transform = Transform3D(0.26047233, 0, -1.4772116, 0, 1.5000001, 0, 1.4772116, 0, 0.26047233, 9.099999, 0.5, 6.4999995)
@@ -926,9 +984,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 22.1
 [node name="bench" parent="Objects" unique_id=1965733506 instance=ExtResource("29_7kvwx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.8, 0, -6.6)
 
-[node name="pumpkin-tall-carved4" parent="Objects" unique_id=182105893 instance=ExtResource("30_a233u")]
-transform = Transform3D(-0.03202127, 0, -0.9994873, 0, 1, 0, 0.9994873, 0, -0.03202127, 31.90537, 0.005432844, -0.31003267)
-
 [node name="rocks-tall" parent="Objects" unique_id=1464084575 instance=ExtResource("31_dcem6")]
 transform = Transform3D(-0.8637651, 0, 0.5038947, 0, 1, 0, -0.5038947, 0, -0.8637651, -0.30307198, 0.005431175, -6.6741176)
 
@@ -943,9 +998,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.191555, 0.005493164, -10.8
 
 [node name="gravestone-bevel5" parent="Objects" unique_id=2119174205 instance=ExtResource("23_xso8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.591555, 0.005493164, -10.871307)
-
-[node name="pumpkin-carved" parent="Objects" unique_id=2128270465 instance=ExtResource("33_e87o3")]
-transform = Transform3D(-0.19243625, 0, -0.9813095, 0, 1, 0, 0.9813095, 0, -0.19243625, 31.77394, 0, 0.12312126)
 
 [node name="pine-fall-crooked" parent="Objects" unique_id=2133722459 instance=ExtResource("34_6h8ik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.1, -3.1000004)
@@ -985,6 +1037,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.7
 
 [node name="cross-wood2" parent="Objects" unique_id=1352816776 instance=ExtResource("36_e84cd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.743957, 0.005432129, -3.3511243)
+
+[node name="shovel2" parent="Objects" unique_id=211484679 instance=ExtResource("45_s0do1")]
+transform = Transform3D(0.64278764, 0.76604444, -3.3484866e-08, 0, -4.371139e-08, -1, -0.76604444, 0.64278764, -2.809714e-08, 21.000772, -2.0000002, -0.0803122)
 
 [node name="GraveKeeper" parent="." unique_id=556584128 instance=ExtResource("38_wlagu")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -2.4, 0, -0.7)
@@ -1073,6 +1128,27 @@ transform = Transform3D(0.64318866, 0, 0.76570773, 0, 1, 0, -0.76570773, 0, 0.64
 [node name="candle-multiple3" parent="Lights" unique_id=766276640 instance=ExtResource("43_240r8")]
 transform = Transform3D(0.68178135, 0, 0.73155606, 0, 1, 0, -0.73155606, 0, 0.68178135, 13.908101, 0.015737206, -10.577163)
 
+[node name="candle5" parent="Lights" unique_id=1229595952 instance=ExtResource("42_npc86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.182705, -1.99565, -0.25317395)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1554221407]
 
 [node name="PauseScreen" parent="CanvasLayer" unique_id=709586517 instance=ExtResource("44_c62yr")]
+
+[node name="altar-wood" parent="." unique_id=1177021405 instance=ExtResource("44_2pk1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1, 0, -1.4)
+
+[node name="detail-bowl2" parent="altar-wood" unique_id=248793291 instance=ExtResource("45_3ypon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17526245, 0.53697026, -0.0020475388)
+
+[node name="detail-chalice2" parent="altar-wood" unique_id=1995051779 instance=ExtResource("46_nn62f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074640274, 0.5370611, -0.13841772)
+
+[node name="detail-plate2" parent="altar-wood" unique_id=2069692899 instance=ExtResource("47_tki4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1666336, 0.5384976, 0.12288451)
+
+[node name="candle" parent="altar-wood" unique_id=324204422 instance=ExtResource("42_npc86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.398777, 0.53881603, -0.22317708)
+
+[node name="lantern-candle" parent="." unique_id=456498796 instance=ExtResource("48_3ypon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.071456, 0.003897071, -0.8706784)

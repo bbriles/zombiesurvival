@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dau2wydghugrv"]
+
+[ext_resource type="PackedScene" uid="uid://dkms02bbka0qa" path="res://models/world/grave-border.glb" id="1_htjsp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1t2tl"]
+size = Vector3(0.07470703, 0.04465332, 1.5380859)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12msu"]
+size = Vector3(0.072265625, 0.04465332, 1.3212891)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwooo"]
+size = Vector3(0.305542, 0.04465332, 0.09343338)
+
+[node name="hole-large" type="StaticBody3D" unique_id=527581744]
+
+[node name="grave-border2" parent="." unique_id=1868380995 instance=ExtResource("1_htjsp")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, -0.0035713315)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=336923686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34350586, 0.02261963, -0.0053710938)
+shape = SubResource("BoxShape3D_1t2tl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=307302152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25112975, 0.02261963, -0.030761719)
+shape = SubResource("BoxShape3D_12msu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1605527136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04861076, 0.02261963, 0.7018033)
+shape = SubResource("BoxShape3D_fwooo")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1821291751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045009688, 0.02261963, -0.6719994)
+shape = SubResource("BoxShape3D_fwooo")
+
+[editable path="grave-border2"]

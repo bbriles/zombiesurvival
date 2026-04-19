@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://c028p4aptwvq3"]
 
+[ext_resource type="PackedScene" uid="uid://dau2wydghugrv" path="res://objects/world/hole_large.tscn" id="1_cybik"]
 [ext_resource type="PackedScene" uid="uid://cwns6muerx2w7" path="res://models/world/crypt-large.glb" id="3_q5lv7"]
 [ext_resource type="PackedScene" uid="uid://bm6hlqc4s11eu" path="res://models/world/crypt-large-roof.glb" id="4_2nqly"]
 [ext_resource type="PackedScene" uid="uid://6hys4tbu05rn" path="res://objects/world/crypt_large_door.tscn" id="5_f2hra"]
+[ext_resource type="PackedScene" uid="uid://bhkndjt2gle32" path="res://objects/world/candle.tscn" id="6_jp41o"]
 [ext_resource type="AudioStream" uid="uid://bbky7jysa3qri" path="res://objects/spawners/sounds/crypt_spawn.wav" id="6_pp1hw"]
+[ext_resource type="PackedScene" uid="uid://c7yu8x2wk2jpk" path="res://objects/world/candle_multiple.tscn" id="7_dell8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgef7"]
 size = Vector3(0.2, 1.1, 2.3)
@@ -19,7 +22,15 @@ albedo_color = Color(0.3854925, 0.38549247, 0.38549247, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jd7px"]
 material = SubResource("StandardMaterial3D_jd7px")
-size = Vector3(1.285, 0.01, 1.835)
+size = Vector3(1.3, 0.01, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nuock"]
+material = SubResource("StandardMaterial3D_jd7px")
+size = Vector3(1.3, 0.01, 0.32)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp41o"]
+material = SubResource("StandardMaterial3D_jd7px")
+size = Vector3(1.23, 0.01, 0.4)
 
 [node name="Large-Crypt" type="StaticBody3D" unique_id=1100036427]
 
@@ -44,7 +55,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5575928, 0.55, 1.15)
 shape = SubResource("BoxShape3D_jd7px")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=368507421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8009844)
 mesh = SubResource("BoxMesh_jd7px")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=776899880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7664665)
+mesh = SubResource("BoxMesh_nuock")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=952854695]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.45219624, 0, -0.0036449134)
+mesh = SubResource("BoxMesh_jp41o")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=302390093]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4474836, 0, 0.0034974813)
+mesh = SubResource("BoxMesh_jp41o")
+
+[node name="hole-large" parent="." unique_id=527581744 instance=ExtResource("1_cybik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.004)
 
 [node name="crypt-large2" parent="." unique_id=278691479 instance=ExtResource("3_q5lv7")]
 
@@ -63,6 +90,12 @@ visible = false
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SpawnPoint" unique_id=1234108175]
 stream = ExtResource("6_pp1hw")
+
+[node name="candle" parent="." unique_id=376307128 instance=ExtResource("6_jp41o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5261055, 0.0011207536, -0.7961529)
+
+[node name="candle-multiple" parent="." unique_id=1415328701 instance=ExtResource("7_dell8")]
+transform = Transform3D(-0.9809958, 0, 0.19402882, 0, 1, 0, -0.19402882, 0, -0.9809958, 0.46167964, 0.0011919327, 0.6053837)
 
 [editable path="crypt-large2"]
 [editable path="crypt-large-door2"]
