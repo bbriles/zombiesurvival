@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://copvt3gxyrrp2" path="res://models/world/detail-chalice.glb" id="46_nn62f"]
 [ext_resource type="PackedScene" uid="uid://4f67d8cwwgrj" path="res://models/world/detail-plate.glb" id="47_tki4a"]
 [ext_resource type="PackedScene" uid="uid://bg716f0d7cmr7" path="res://objects/world/lantern_candle.tscn" id="48_3ypon"]
+[ext_resource type="PackedScene" uid="uid://bpk1u0utq63dd" path="res://objects/monsters/ghost.tscn" id="51_vqg3s"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -1161,3 +1162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.398777, 0.53881603, -0.2231
 
 [node name="lantern-candle" parent="." unique_id=456498796 instance=ExtResource("48_3ypon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.071456, 0.003897071, -0.8706784)
+
+[node name="Ghost" parent="." unique_id=927245541 instance=ExtResource("51_vqg3s")]
+transform = Transform3D(0.5005743, 0, 0.86569357, 0, 1, 0, -0.86569357, 0, 0.5005743, 3.1244822, 0.005433142, 2.1374662)

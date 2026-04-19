@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bpk1u0utq63dd"]
+
+[ext_resource type="Script" uid="uid://belbsbfshvqjt" path="res://objects/monsters/Monster.cs" id="1_fjq1r"]
+[ext_resource type="PackedScene" uid="uid://cijo1uxgsrap7" path="res://models/characters/character-ghost.glb" id="2_fjq1r"]
+[ext_resource type="Texture2D" uid="uid://dycrd7xykaek7" path="res://models/characters/Textures/colormap.png" id="3_0apia"]
+[ext_resource type="AudioStream" uid="uid://datqypfrfaeh" path="res://objects/monsters/sounds/zombie-hurt.wav" id="3_v5gum"]
+[ext_resource type="AudioStream" uid="uid://cfk378ae4seog" path="res://objects/monsters/sounds/zombie-attack-01.wav" id="4_tmcjq"]
+[ext_resource type="AudioStream" uid="uid://b6oskfwswf4nr" path="res://objects/monsters/sounds/zombie-alert.wav" id="5_pw1mu"]
+[ext_resource type="AudioStream" uid="uid://ts5kskxd754f" path="res://objects/monsters/sounds/zombie-die.wav" id="6_hkcyn"]
+[ext_resource type="Texture2D" uid="uid://by78uvvs71rfl" path="res://particles/blood_particle_01.png" id="7_wjvxc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4d5h"]
+radius = 0.3305664
+height = 0.82500005
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5gum"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.7647059)
+albedo_texture = ExtResource("3_0apia")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmcjq"]
+resource_name = "colormap"
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.7647059)
+albedo_texture = ExtResource("3_0apia")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw1mu"]
+resource_name = "colormap"
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.7647059)
+albedo_texture = ExtResource("3_0apia")
+
+[sub_resource type="Curve" id="Curve_y7f0w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_emnjm"]
+curve = SubResource("Curve_y7f0w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ms8om"]
+direction = Vector3(0, 0, -10)
+spread = 60.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+scale_min = 0.03
+scale_curve = SubResource("CurveTexture_emnjm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1okwu"]
+transparency = 1
+albedo_color = Color(1, 0.49352002, 0.43312326, 1)
+albedo_texture = ExtResource("7_wjvxc")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_j7p6a"]
+material = SubResource("StandardMaterial3D_1okwu")
+size = Vector2(0.25, 0.25)
+
+[node name="Ghost" type="RigidBody3D" unique_id=1961716468 node_paths=PackedStringArray("AnimPlayer", "MonsterModel", "HurtSound", "DieSound", "AttackSound", "AlertSound", "HitParticles")]
+collision_layer = 4
+collision_mask = 6
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 10.0
+script = ExtResource("1_fjq1r")
+AnimPlayer = NodePath("character-ghost2/AnimationPlayer")
+MonsterModel = NodePath("character-ghost2")
+HurtSound = NodePath("HurtSound")
+DieSound = NodePath("DieSound")
+AttackSound = NodePath("AttackSound")
+AlertSound = NodePath("AlertSound")
+HitParticles = NodePath("HitParticles")
+MaxHealth = 75.0
+AggroRange = 4.0
+Speed = 1.0
+AnimWalk = "fall"
+AnimAttacks = PackedStringArray("attack-melee-left", "attack-melee-right")
+AnimHurt = "emote_no"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.5247194, -0.009155273)
+shape = SubResource("CapsuleShape3D_j4d5h")
+
+[node name="character-ghost2" parent="." unique_id=1933002442 instance=ExtResource("2_fjq1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11717397, 0)
+
+[node name="character-ghost" parent="character-ghost2" index="0" unique_id=295629094]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="torso" parent="character-ghost2/character-ghost/root" parent_id_path=PackedInt32Array(1933002442, 282326562) index="0" unique_id=871497512]
+surface_material_override/0 = SubResource("StandardMaterial3D_v5gum")
+
+[node name="arm-right" parent="character-ghost2/character-ghost/root/torso" index="0" unique_id=1565314243]
+transform = Transform3D(0.76847833, 0.4631425, -0.44152007, -0.4016096, 0.88628376, 0.23067448, 0.49814722, 5.0380822e-05, 0.86709243, -0.125, 0.15, 0.0024999976)
+surface_material_override/0 = SubResource("StandardMaterial3D_tmcjq")
+
+[node name="arm-left" parent="character-ghost2/character-ghost/root/torso" index="1" unique_id=1539197330]
+transform = Transform3D(0.76847833, -0.4631425, 0.44152007, 0.4016096, 0.88628376, 0.23067448, -0.49814722, 5.0380822e-05, 0.86709243, 0.125, 0.15, 0.0024999976)
+surface_material_override/0 = SubResource("StandardMaterial3D_pw1mu")
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="." unique_id=700839158]
+stream = ExtResource("3_v5gum")
+volume_db = -2.0
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="." unique_id=364658630]
+stream = ExtResource("4_tmcjq")
+volume_db = -2.0
+
+[node name="AlertSound" type="AudioStreamPlayer3D" parent="." unique_id=1510409426]
+stream = ExtResource("5_pw1mu")
+volume_db = -2.0
+
+[node name="DieSound" type="AudioStreamPlayer3D" parent="." unique_id=1905125851]
+stream = ExtResource("6_hkcyn")
+volume_db = -2.0
+
+[node name="HitParticles" type="GPUParticles3D" parent="." unique_id=2020431850]
+emitting = false
+amount = 24
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_ms8om")
+draw_pass_1 = SubResource("QuadMesh_j7p6a")
+
+[editable path="character-ghost2"]
