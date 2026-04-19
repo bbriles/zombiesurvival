@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://jvhg0rgca3eb"]
+
+[ext_resource type="Script" uid="uid://d17ybnxcukqrk" path="res://objects/projectiles/Bullet.cs" id="1_8qtf8"]
+[ext_resource type="PackedScene" uid="uid://4dlf0yi53jwf" path="res://models/projectiles/bone.glb" id="1_n4fk0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qtf8"]
+size = Vector3(0.12309092, 0.04492265, 0.32442)
+
+[node name="bone" type="Area3D" unique_id=1122005171 node_paths=PackedStringArray("RotateMesh")]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_8qtf8")
+Speed = 8.0
+MaxRange = 50.0
+Damage = 20.0
+RotateMesh = NodePath("bone")
+RotationSpeed = Vector3(0, 6, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2101699546]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, -2.4214387e-08, 0)
+shape = SubResource("BoxShape3D_8qtf8")
+
+[node name="bone" parent="." unique_id=1770539782 instance=ExtResource("1_n4fk0")]
+
+[editable path="bone"]

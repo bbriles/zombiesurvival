@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://56leknnackab"
-path="res://.godot/imported/smoke.glb-a96849da0e30d7ffc6eb342e7c3b5b63.scn"
+uid="uid://b8kg5vc1pn6is"
+path="res://.godot/imported/bullet-foam-tip-thick.glb-be0068544f87b8220907e5b4a48e0d60.scn"
 
 [deps]
 
-source_file="res://models/weapons/smoke.glb"
-dest_files=["res://.godot/imported/smoke.glb-a96849da0e30d7ffc6eb342e7c3b5b63.scn"]
+source_file="res://models/projectiles/bullet-foam-tip-thick.glb"
+dest_files=["res://.godot/imported/bullet-foam-tip-thick.glb-be0068544f87b8220907e5b4a48e0d60.scn"]
 
 [params]
 

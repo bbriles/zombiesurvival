@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://db1yra1qew5dm"
-path="res://.godot/imported/crate-medium.glb-d1e38339e2da388dfb1d6a0b0c2a1eca.scn"
+uid="uid://4dlf0yi53jwf"
+path="res://.godot/imported/bone.glb-5489018eaec0d56b833ddfca7c52c146.scn"
 
 [deps]
 
-source_file="res://models/weapons/crate-medium.glb"
-dest_files=["res://.godot/imported/crate-medium.glb-d1e38339e2da388dfb1d6a0b0c2a1eca.scn"]
+source_file="res://models/projectiles/bone.glb"
+dest_files=["res://.godot/imported/bone.glb-5489018eaec0d56b833ddfca7c52c146.scn"]
 
 [params]
 

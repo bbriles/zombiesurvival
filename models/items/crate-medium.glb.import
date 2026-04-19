@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bycdchfii130g"
-path="res://.godot/imported/bullet-foam-thick.glb-bf42a30b1905b99fbb8abf8e4c290269.scn"
+uid="uid://db1yra1qew5dm"
+path="res://.godot/imported/crate-medium.glb-07e0c5d61d00c6ddbf4680d25d80cdfe.scn"
 
 [deps]
 
-source_file="res://models/weapons/bullet-foam-thick.glb"
-dest_files=["res://.godot/imported/bullet-foam-thick.glb-bf42a30b1905b99fbb8abf8e4c290269.scn"]
+source_file="res://models/items/crate-medium.glb"
+dest_files=["res://.godot/imported/crate-medium.glb-07e0c5d61d00c6ddbf4680d25d80cdfe.scn"]
 
 [params]
 

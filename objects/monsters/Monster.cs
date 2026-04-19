@@ -24,6 +24,9 @@ public partial class Monster : RigidBody3D
     [Export] public float AttackInterval = 1f; // seconds between attacks
     [Export] public float AttackDamage   = 20f; 
     [Export] public float HurtStunTime = 0.2f; // seconds to pause after getting hit
+    [Export] public string AttackType = "melee"; // "melee", "ranged", or "magic"
+    [Export] public PackedScene RangedProjectileScene; // for ranged attacks
+    [Export] public Node3D ProjectileSpawnPoint;
 
     [ExportGroup("Death")]
     [Export] public float DeathLingerTime = 2.0f; // seconds before QueueFree
@@ -106,8 +109,13 @@ public partial class Monster : RigidBody3D
                 break;
             case State.Hurt:
                 _stunTimer -= dt;
-                if (_stunTimer <= 0f)                    
-                    EnterChase();
+                if (_stunTimer <= 0f)
+                {
+                    if (distToPlayer > AttackRange)
+                        EnterChase();
+                    else    
+                        EnterAttack();
+                }
                 break;
         }
 
@@ -144,12 +152,48 @@ public partial class Monster : RigidBody3D
 
     private void PerformAttack()
     {
+        if (AttackType == "melee")
+        {
+            PerformMeleeAttack();
+        }
+        else if (AttackType == "ranged")
+        {
+            PerformRangedAttack();
+        }
+        else if (AttackType == "magic")
+        {
+            GD.PrintErr("Magic attack not implemented yet.");
+        }
+        else
+        {
+            GD.PrintErr($"Unknown attack type: {AttackType}");
+        }
+    }
+
+    private void PerformMeleeAttack()
+    {
         _attackCooldown = AttackInterval;
         var attackAnim = AnimAttacks[GD.Randi() % AnimAttacks.Length];
         PlayAnim(attackAnim, true);
         
         GD.Print($"{Name} attacks player for {AttackDamage} damage!");
         GameManager.Player.TakeDamage(AttackDamage);
+        AttackSound?.Play();
+    }
+
+    private void PerformRangedAttack()
+    {
+        _attackCooldown = AttackInterval;
+        var attackAnim = AnimAttacks[GD.Randi() % AnimAttacks.Length];
+        PlayAnim(attackAnim, true);
+
+        var projectile = RangedProjectileScene.Instantiate<Node3D>();
+        GetTree().CurrentScene.AddChild(projectile);
+
+        projectile.GlobalTransform = ProjectileSpawnPoint.GlobalTransform;
+
+        GD.Print($"{Name} shoots a projectile at the player!");
+
         AttackSound?.Play();
     }
 

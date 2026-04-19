@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8w6aro3q5ihn"
-path="res://.godot/imported/crate-wide.glb-d4510a3e652920769b4a6d39dbfef93f.scn"
+uid="uid://cshxia8hw7av2"
+path="res://.godot/imported/clip-large.glb-c5792870435e157767aaeb09a96cc7b1.scn"
 
 [deps]
 
-source_file="res://models/weapons/crate-wide.glb"
-dest_files=["res://.godot/imported/crate-wide.glb-d4510a3e652920769b4a6d39dbfef93f.scn"]
+source_file="res://models/items/clip-large.glb"
+dest_files=["res://.godot/imported/clip-large.glb-c5792870435e157767aaeb09a96cc7b1.scn"]
 
 [params]
 

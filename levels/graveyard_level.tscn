@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dqr3k70ws2clj" path="res://objects/player/Player.tscn" id="2_c62yr"]
 [ext_resource type="Texture2D" uid="uid://ddghw5ah1n605" path="res://models/world/Textures/floor_ground_grass.png" id="3_s0do1"]
 [ext_resource type="Texture2D" uid="uid://b58mqu601xbk1" path="res://models/world/Textures/floor_ground_dirt.png" id="4_fii6p"]
+[ext_resource type="Texture2D" uid="uid://cd8ffyuxapf2l" path="res://models/world/Textures/rustic_stone_wall_diff.jpg" id="4_tki4a"]
 [ext_resource type="PackedScene" uid="uid://bxgt801sp2cj2" path="res://objects/world/iron-fence-border-column.tscn" id="5_2pk1k"]
+[ext_resource type="Texture2D" uid="uid://bnwyriialm1tw" path="res://models/world/Textures/rustic_stone_wall_nor_gl.jpg" id="5_vqg3s"]
 [ext_resource type="PackedScene" uid="uid://cuwhejqr6vfgx" path="res://objects/world/iron-fence-border-curve.tscn" id="6_3ypon"]
 [ext_resource type="PackedScene" uid="uid://bc0xr34wiivcw" path="res://objects/world/iron-fence-border.tscn" id="7_nn62f"]
 [ext_resource type="PackedScene" uid="uid://bce4wj0h8yxwc" path="res://objects/world/brick-wall.tscn" id="8_tki4a"]
@@ -73,6 +75,12 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fii6p"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2pni"]
+albedo_texture = ExtResource("4_tki4a")
+normal_enabled = true
+normal_texture = ExtResource("5_vqg3s")
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igg6c"]
 albedo_texture = ExtResource("4_fii6p")
 uv1_triplanar = true
@@ -106,7 +114,7 @@ shadow_enabled = true
 shadow_blur = 3.0
 
 [node name="Player" parent="." unique_id=820153746 instance=ExtResource("2_c62yr")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.7771509, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.1430025, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1773977596]
 environment = SubResource("Environment_7c752")
@@ -147,6 +155,7 @@ material = SubResource("StandardMaterial3D_fii6p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.25, -2.1000001, 0.05000013)
 use_collision = true
 size = Vector3(7.9, 0.2, 2.3)
+material = SubResource("StandardMaterial3D_b2pni")
 
 [node name="Hole-Wall2" type="CSGBox3D" parent="CSG-Boxes" unique_id=1227052524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.55, -1.2, 0.049999982)

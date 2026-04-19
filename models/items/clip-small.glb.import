@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8kg5vc1pn6is"
-path="res://.godot/imported/bullet-foam-tip-thick.glb-e7911580499706a5c395fec51e88c324.scn"
+uid="uid://dmokv1bck576k"
+path="res://.godot/imported/clip-small.glb-ba8805a50344d3ac2dcc2993ae0e913e.scn"
 
 [deps]
 
-source_file="res://models/weapons/bullet-foam-tip-thick.glb"
-dest_files=["res://.godot/imported/bullet-foam-tip-thick.glb-e7911580499706a5c395fec51e88c324.scn"]
+source_file="res://models/items/clip-small.glb"
+dest_files=["res://.godot/imported/clip-small.glb-ba8805a50344d3ac2dcc2993ae0e913e.scn"]
 
 [params]
 

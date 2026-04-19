@@ -10,8 +10,9 @@ public partial class Bullet : Area3D
 	/// Maximum distance (metres) before the bullet is destroyed.
 	[Export] public float MaxRange = 100.0f;
 
-	[Export]
-	public float Damage = 25.0f;
+	[Export] public float Damage = 25.0f;
+	[Export] public Node3D RotateMesh;
+	[Export] public Vector3 RotationSpeed { get; set; } = new Vector3(0f, 0f, 0f);
 
 	// -------------------------------------------------------------------------
 	// Private state
@@ -30,17 +31,22 @@ public partial class Bullet : Area3D
 
 		// Connect hit signals to local handlers.
 		BodyEntered  += OnBodyEntered;
-		AreaEntered  += OnAreaEntered;
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double dt)
 	{
 		// Move forward in local -Z each frame.
-		GlobalPosition += -GlobalTransform.Basis.Z * Speed * (float)delta;
+		GlobalPosition += -GlobalTransform.Basis.Z * Speed * (float)dt;
 
 		// Destroy once the bullet exceeds its maximum range.
 		if (GlobalPosition.DistanceTo(_spawnPosition) >= MaxRange)
 			DestroyBullet();
+
+		// Rotate
+		if (RotationSpeed.LengthSquared() > 0f)
+		{
+			RotateMesh.Rotation += RotationSpeed * (float)dt;		
+		}
 	}
 
 	// -------------------------------------------------------------------------
@@ -51,16 +57,10 @@ public partial class Bullet : Area3D
 	{
 		if (body is Monster monster)
 			monster.TakeDamage(Damage, Vector3.Zero); // TODO: pass actual hit point from collision
+		else if (body is Player player)
+			player.TakeDamage(Damage);	
 
 		GD.Print($"Bullet hit body: {body.Name}");
-		DestroyBullet();
-	}
-
-	private void OnAreaEntered(Area3D area)
-	{
-		// Optional: react to overlapping areas (e.g. trigger zones).
-		// Remove or leave empty if you only care about physics bodies.
-		GD.Print($"Bullet entered area: {area.Name}");
 		DestroyBullet();
 	}
 

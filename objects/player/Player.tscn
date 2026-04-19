@@ -119,6 +119,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "InjuryOverlay", "DeathScreen")]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
@@ -170,6 +172,7 @@ spot_range = 3.0
 
 [node name="WeaponRay" type="RayCast3D" parent="Head" unique_id=1316109182]
 target_position = Vector3(0, 0, -100)
+collision_mask = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1234037841]
 

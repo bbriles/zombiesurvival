@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cshxia8hw7av2"
-path="res://.godot/imported/clip-large.glb-9516868ba588b15a3111bc213454c4aa.scn"
+uid="uid://56leknnackab"
+path="res://.godot/imported/smoke.glb-07f8d9ce54c0527c743a8e9839556d58.scn"
 
 [deps]
 
-source_file="res://models/weapons/clip-large.glb"
-dest_files=["res://.godot/imported/clip-large.glb-9516868ba588b15a3111bc213454c4aa.scn"]
+source_file="res://models/effects/smoke.glb"
+dest_files=["res://.godot/imported/smoke.glb-07f8d9ce54c0527c743a8e9839556d58.scn"]
 
 [params]
 
