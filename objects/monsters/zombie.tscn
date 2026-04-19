@@ -52,6 +52,7 @@ AttackSound = NodePath("AttackSound")
 AlertSound = NodePath("AlertSound")
 HitParticles = NodePath("HitParticles")
 MaxHealth = 50.0
+InitialAttackDelay = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284472360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007835388, 0.40754545, -0.009155273)

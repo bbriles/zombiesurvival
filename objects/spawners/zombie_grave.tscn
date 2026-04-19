@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b1vuhdmbvcauh" path="res://objects/spawners/MonsterSpawner.cs" id="1_t058v"]
 [ext_resource type="PackedScene" uid="uid://cage3u8o8faf5" path="res://objects/monsters/zombie.tscn" id="2_eemao"]
-[ext_resource type="PackedScene" uid="uid://dkms02bbka0qa" path="res://models/world/grave-border.glb" id="2_jtu3a"]
-[ext_resource type="PackedScene" uid="uid://cc8gs7kagmsy5" path="res://models/world/grave.glb" id="3_eemao"]
+[ext_resource type="PackedScene" uid="uid://dkms02bbka0qa" path="res://models/graveyard-kit/grave-border.glb" id="2_jtu3a"]
+[ext_resource type="PackedScene" uid="uid://cc8gs7kagmsy5" path="res://models/graveyard-kit/grave.glb" id="3_eemao"]
 [ext_resource type="Texture2D" uid="uid://61uuud8n6ql3" path="res://particles/dirt_02.png" id="4_33wm7"]
 [ext_resource type="AudioStream" uid="uid://dqsl04avipjqc" path="res://objects/spawners/sounds/zombie-spawn.wav" id="6_eemao"]
 

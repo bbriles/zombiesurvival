@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dgp1x3el0dmyh"]
+
+[ext_resource type="PackedScene" uid="uid://fb5q0lfudl3i" path="res://models/graveyard-kit/altar-stone.glb" id="1_jpi5g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpi5g"]
+size = Vector3(0.8662215, 0.4375, 0.5206608)
+
+[node name="altar-stone" type="StaticBody3D" unique_id=135129234]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=569177862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014701188, 0.21875, 0.025680304)
+shape = SubResource("BoxShape3D_jpi5g")
+
+[node name="altar-stone2" parent="." unique_id=1030308563 instance=ExtResource("1_jpi5g")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[editable path="altar-stone2"]

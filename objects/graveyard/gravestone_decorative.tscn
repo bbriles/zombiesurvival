@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bwenbsu50024v"]
+
+[ext_resource type="PackedScene" uid="uid://dgfhyr6xpe2s1" path="res://models/graveyard-kit/gravestone-decorative.glb" id="1_4xsky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cdd4n"]
+size = Vector3(0.5100794, 0.59424126, 0.25)
+
+[node name="gravestone-decorative" type="StaticBody3D" unique_id=614876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1833293993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29712063, 0)
+shape = SubResource("BoxShape3D_cdd4n")
+
+[node name="gravestone-decorative2" parent="." unique_id=1657901207 instance=ExtResource("1_4xsky")]
+
+[editable path="gravestone-decorative2"]

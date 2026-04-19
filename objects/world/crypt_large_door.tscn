@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://6hys4tbu05rn"]
-
-[ext_resource type="PackedScene" uid="uid://dyfs3t5uxvg8d" path="res://models/world/crypt-large-door.glb" id="1_hrl0a"]
-
-[node name="crypt-large-door2" unique_id=1067479154 instance=ExtResource("1_hrl0a")]
-
-[node name="crypt-large-door" parent="." index="0" unique_id=32506782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319, 0, 0)

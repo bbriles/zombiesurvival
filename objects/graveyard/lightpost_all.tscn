@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dq46qk2r3w7lf"]
+
+[ext_resource type="PackedScene" uid="uid://dxnh1htgjxen0" path="res://models/graveyard-kit/lightpost-all.glb" id="1_dr6rx"]
+
+[node name="lightpost-all" type="StaticBody3D" unique_id=1554371009]
+
+[node name="lightpost-all2" parent="." unique_id=1855103583 instance=ExtResource("1_dr6rx")]

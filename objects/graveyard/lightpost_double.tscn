@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dliu4rqmogl7m"]
+
+[ext_resource type="PackedScene" uid="uid://uqnd5trymrr7" path="res://models/graveyard-kit/lightpost-double.glb" id="1_h3wh5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h3wh5"]
+height = 1.2375
+radius = 0.1
+
+[node name="lightpost-double" type="StaticBody3D" unique_id=986620853]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1962115955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63125, 0)
+shape = SubResource("CylinderShape3D_h3wh5")
+
+[node name="lightpost-double2" parent="." unique_id=1118447488 instance=ExtResource("1_h3wh5")]

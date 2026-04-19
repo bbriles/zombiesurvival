@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dbusl8k5fd00s"]
+
+[ext_resource type="PackedScene" uid="uid://cit57p6rikv7v" path="res://models/graveyard-kit/gravestone-broken.glb" id="1_oexvl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4byi"]
+size = Vector3(0.5090254, 0.341081, 0.39154518)
+
+[node name="gravestone-broken" type="StaticBody3D" unique_id=1904711863]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1848729185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029512703, 0.1705405, 0.07077259)
+shape = SubResource("BoxShape3D_k4byi")
+
+[node name="gravestone-broken2" parent="." unique_id=62251708 instance=ExtResource("1_oexvl")]
+
+[editable path="gravestone-broken2"]

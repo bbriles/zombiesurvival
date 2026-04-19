@@ -54,9 +54,10 @@ AttackSound = NodePath("AttackSound")
 AlertSound = NodePath("AlertSound")
 HitParticles = NodePath("HitParticles")
 AggroRange = 12.0
-AttackRange = 8.0
+AttackRange = 7.5
 Speed = 2.5
 AttackInterval = 2.0
+InitialAttackDelay = 2.0
 AttackDamage = 15.0
 AttackType = "ranged"
 RangedProjectileScene = ExtResource("2_k28oo")
@@ -75,26 +76,17 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="ProjectileOrigin" type="Marker3D" parent="character-skeleton2/character-skeleton" index="0" unique_id=431345513]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.19206649, 0.42253047, 0.37280756)
 
-[node name="root" parent="character-skeleton2/character-skeleton" index="1" unique_id=1659771092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06830789)
-
-[node name="leg-left" parent="character-skeleton2/character-skeleton/root" index="0" unique_id=993258584]
-transform = Transform3D(1, 0, 0, 0, 0.9363636, 0.35103172, 0, -0.35103172, 0.9363636, 0.074204, 0.223184, -1.4438228e-15)
-
-[node name="torso" parent="character-skeleton2/character-skeleton/root" index="1" unique_id=1530590639]
-transform = Transform3D(1, 0, 0, 0, 0.9541664, -0.29927647, 0, 0.29927647, 0.9541664, 0, 0.223184, -7.219114e-16)
+[node name="torso" parent="character-skeleton2/character-skeleton/root" parent_id_path=PackedInt32Array(1440400791, 1659771092) index="1" unique_id=1530590639]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.223184, -7.219114e-16)
 
 [node name="head" parent="character-skeleton2/character-skeleton/root/torso" index="0" unique_id=38837574]
-transform = Transform3D(1, 0, 0, 0, 0.9541663, 0.29927644, 0, -0.29927644, 0.9541663, 0, 0.22398205, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0.22398205, 0)
 
 [node name="arm-right" parent="character-skeleton2/character-skeleton/root/torso" index="1" unique_id=1351582942]
-transform = Transform3D(0.31244552, -0.8573493, 0.40905967, -0.44315666, 0.24933505, 0.8610715, -0.84023196, -0.4503154, -0.30203652, -0.125, 0.17, 0.0024999976)
+transform = Transform3D(0.7071067, -0.70710665, 0, 0.7071067, 0.70710665, 0, 0, 0, 1, -0.125, 0.17, 0.0024999976)
 
 [node name="arm-left" parent="character-skeleton2/character-skeleton/root/torso" index="2" unique_id=1842120193]
-transform = Transform3D(0.7799031, 0.4713632, 0.4117861, -0.5391497, 0.84010774, 0.059469327, -0.31791303, -0.26839465, 0.909338, 0.125, 0.17, 0.0024999976)
-
-[node name="leg-right" parent="character-skeleton2/character-skeleton/root" index="2" unique_id=1896129792]
-transform = Transform3D(1, 0, 0, 0, 0.993917, 0.11013205, 0, -0.11013205, 0.993917, -0.074204, 0.223184, -1.4438228e-15)
+transform = Transform3D(0.70710665, 0.7071068, 0, -0.70710677, 0.7071067, 0, 0, 0, 1, 0.125, 0.17, 0.0024999976)
 
 [node name="AnimationPlayer" parent="character-skeleton2" index="1" unique_id=488988136]
 libraries/custom = ExtResource("3_k28oo")

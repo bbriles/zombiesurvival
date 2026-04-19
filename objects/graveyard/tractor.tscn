@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://m7s57iaaplpn"]
+
+[ext_resource type="PackedScene" uid="uid://ygtf78gaye2f" path="res://models/car-kit/tractor.glb" id="1_ywwh4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5x4x"]
+size = Vector3(1.3420768, 1.5647852, 2.1187778)
+
+[node name="tractor" type="StaticBody3D" unique_id=1268686564]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2118968413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7117107e-09, 0.8196606, 0.04138743)
+shape = SubResource("BoxShape3D_l5x4x")
+
+[node name="tractor" parent="." unique_id=1144343859 instance=ExtResource("1_ywwh4")]
+
+[editable path="tractor"]

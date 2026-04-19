@@ -22,6 +22,7 @@ public partial class Monster : RigidBody3D
 
     [ExportGroup("Combat")]
     [Export] public float AttackInterval = 1f; // seconds between attacks
+    [Export] public float InitialAttackDelay = 0.5f; // seconds to delay before first attack after spawning
     [Export] public float AttackDamage   = 20f; 
     [Export] public float HurtStunTime = 0.2f; // seconds to pause after getting hit
     [Export] public string AttackType = "melee"; // "melee", "ranged", or "magic"
@@ -58,6 +59,7 @@ public partial class Monster : RigidBody3D
     public override void _Ready()
     {
         _health = MaxHealth;
+        _attackCooldown = InitialAttackDelay;
 
         PlayAnim(AnimIdle);
     }

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cdxif7yx0hk1q"]
+
+[ext_resource type="PackedScene" uid="uid://3gghlx43sx6i" path="res://models/graveyard-kit/iron-fence.glb" id="1_8ly5w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ao5gy"]
+size = Vector3(2, 0.87890005, 0.110000014)
+
+[node name="iron-fence" type="StaticBody3D" unique_id=1824079606]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1063400427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.43945003, 0.07500002)
+shape = SubResource("BoxShape3D_ao5gy")
+
+[node name="iron-fence2" parent="." unique_id=343226611 instance=ExtResource("1_8ly5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.4)
+
+[node name="iron-fence3" parent="." unique_id=1061968352 instance=ExtResource("1_8ly5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.4)
+
+[editable path="iron-fence2"]
+[editable path="iron-fence3"]

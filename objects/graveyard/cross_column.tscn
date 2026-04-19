@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://mesxuxtx4loa"]
+
+[ext_resource type="PackedScene" uid="uid://bpkylhmg5182m" path="res://models/graveyard-kit/cross-column.glb" id="1_34gt2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngf25"]
+size = Vector3(0.34941405, 1.2632482, 0.35371095)
+
+[node name="cross-column" type="StaticBody3D" unique_id=117581266]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1909248917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00029298663, 0.6316241, -0.0028320253)
+shape = SubResource("BoxShape3D_ngf25")
+
+[node name="cross-column2" parent="." unique_id=909772465 instance=ExtResource("1_34gt2")]
+
+[editable path="cross-column2"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c7yu8x2wk2jpk"]
+
+[ext_resource type="PackedScene" uid="uid://dta3f2qt8e177" path="res://models/graveyard-kit/candle-multiple.glb" id="1_e1s78"]
+[ext_resource type="Shader" uid="uid://cchsl8grxi8jo" path="res://shaders/candle_flame.gdshader" id="2_l6pdf"]
+[ext_resource type="Texture2D" uid="uid://ebboxuehcy26" path="res://models/graveyard-kit/Textures/colormap.png" id="2_tnlhk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcw5b"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_tnlhk")
+emission_enabled = true
+emission = Color(1, 0.54901963, 0.16470589, 1)
+emission_energy_multiplier = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yvuo"]
+render_priority = 0
+shader = ExtResource("2_l6pdf")
+shader_parameter/flame_height = 1.8
+shader_parameter/taper_factor = 1.0
+shader_parameter/deviation = Vector3(0, 0, 0)
+shader_parameter/turbulence_speed = 3.0
+shader_parameter/turbulence_force = 2.0
+shader_parameter/inner_color = Color(1, 1, 1, 1)
+shader_parameter/outer_color = Color(1, 0.75, 0, 1)
+shader_parameter/bottom_color = Color(0, 0.1, 1, 1)
+shader_parameter/emission = 5.0
+shader_parameter/max_alpha = 0.4
+shader_parameter/border_width = 0.75
+shader_parameter/bottom_color_fade_y_end = 0.2
+shader_parameter/bottom_color_fade_y_start = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_tnlhk"]
+material = SubResource("ShaderMaterial_2yvuo")
+radius = 0.05
+height = 0.1
+
+[node name="candle-multiple" type="Node3D" unique_id=1415328701]
+
+[node name="candle-multiple2" parent="." unique_id=1030209306 instance=ExtResource("1_e1s78")]
+
+[node name="candle-multiple" parent="candle-multiple2" index="0" unique_id=1267297215]
+surface_material_override/0 = SubResource("StandardMaterial3D_mcw5b")
+
+[node name="flame" type="MeshInstance3D" parent="." unique_id=684116105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050028145, 0.26139903, 0.017038725)
+mesh = SubResource("SphereMesh_tnlhk")
+
+[node name="flame2" type="MeshInstance3D" parent="." unique_id=2004155481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06384493, 0.22675335, -0.071312584)
+mesh = SubResource("SphereMesh_tnlhk")
+
+[node name="flame3" type="MeshInstance3D" parent="." unique_id=770533789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06463019, 0.17373934, 0.07508601)
+mesh = SubResource("SphereMesh_tnlhk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2063682819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31944144, 0)
+light_color = Color(1, 0.54901963, 0.16470589, 1)
+light_energy = 1.4
+distance_fade_enabled = true
+omni_range = 6.0
+omni_attenuation = 1.5
+omni_shadow_mode = 0
+
+[editable path="candle-multiple2"]

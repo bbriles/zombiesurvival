@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://oguitr71ihdw"]
+
+[ext_resource type="PackedScene" uid="uid://c0wvf4ucuucyl" path="res://models/graveyard-kit/crypt-b.glb" id="1_as7pn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4iaos"]
+size = Vector3(0.62, 0.5224054, 1.1159999)
+
+[node name="crypt-b" type="StaticBody3D" unique_id=22048550]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1530286851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2612027, 0)
+shape = SubResource("BoxShape3D_4iaos")
+
+[node name="crypt-b2" parent="." unique_id=1748410308 instance=ExtResource("1_as7pn")]
+
+[editable path="crypt-b2"]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c1ipxl0cwu0pu"]
+
+[ext_resource type="PackedScene" uid="uid://dr1y5k6cnc01m" path="res://models/graveyard-kit/gravestone-roof.glb" id="1_3s7q4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2cch"]
+size = Vector3(0.48643818, 0.6075875, 0.25)
+
+[node name="gravestone-roof" type="StaticBody3D" unique_id=1971760994]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=739559585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30379376, 0)
+shape = SubResource("BoxShape3D_q2cch")
+
+[node name="gravestone-roof2" parent="." unique_id=1784485976 instance=ExtResource("1_3s7q4")]
+
+[editable path="gravestone-roof2"]

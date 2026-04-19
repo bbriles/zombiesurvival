@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://yclbv828lmqp"]
+
+[ext_resource type="PackedScene" uid="uid://bedqg6x5xwqmv" path="res://models/graveyard-kit/gravestone-cross-large.glb" id="1_dppdv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0f7y"]
+size = Vector3(0.45, 0.938326, 0.32999998)
+
+[node name="gravestone-cross-large" type="StaticBody3D" unique_id=1809976274]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1336860982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.469163, 0.04)
+shape = SubResource("BoxShape3D_j0f7y")
+
+[node name="gravestone-cross-large2" parent="." unique_id=1637037476 instance=ExtResource("1_dppdv")]
+
+[editable path="gravestone-cross-large2"]
