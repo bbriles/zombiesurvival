@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bin3ermydo0l7"]
+
+[ext_resource type="Script" uid="uid://b4gop1vbjyqlf" path="res://objects/effects/Explosion.cs" id="1_i7h5o"]
+[ext_resource type="PackedScene" uid="uid://56leknnackab" path="res://models/effects/smoke.glb" id="1_v3de2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7h5o"]
+resource_name = "colormap"
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.5647059, 0.5647059, 0.5647059, 0.34901962)
+emission_enabled = true
+emission = Color(0.96190554, 0.8447917, 0.35269114, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i7h5o"]
+radius = 0.12962559
+
+[node name="GrenadeExplosion" type="Area3D" unique_id=1781508726 node_paths=PackedStringArray("ExplosionMesh", "ExplosionLight", "ExplosionCollision")]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_i7h5o")
+ExplosionMesh = NodePath("smoke2/smoke")
+ExplosionLight = NodePath("OmniLight3D")
+ExplosionCollision = NodePath("CollisionShape3D")
+
+[node name="smoke2" parent="." unique_id=203371660 instance=ExtResource("1_v3de2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08657265, 0)
+
+[node name="smoke" parent="smoke2" index="0" unique_id=1514216933]
+surface_material_override/0 = SubResource("StandardMaterial3D_i7h5o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=22246525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09462252, 0)
+shape = SubResource("SphereShape3D_i7h5o")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=655002603]
+light_color = Color(1, 1, 0.6313726, 1)
+light_energy = 5.0
+light_indirect_energy = 3.0
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+
+[editable path="smoke2"]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cu3cnpw1u4xru"]
+
+[ext_resource type="Script" uid="uid://bgntu3i433c0u" path="res://objects/projectiles/Grenade.cs" id="1_o2j28"]
+[ext_resource type="PackedScene" uid="uid://wcmehgwus7bh" path="res://models/projectiles/grenade-b.glb" id="1_qi841"]
+[ext_resource type="PackedScene" uid="uid://bin3ermydo0l7" path="res://objects/effects/grenade_explosion.tscn" id="2_nc47v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o2j28"]
+radius = 0.09152135
+
+[node name="Grenade" type="RigidBody3D" unique_id=1786243615]
+collision_layer = 16
+collision_mask = 5
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_o2j28")
+ExplosionScene = ExtResource("2_nc47v")
+UpwardAngle = 0.4
+
+[node name="grenade-b2" parent="." unique_id=132334192 instance=ExtResource("1_qi841")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075655535, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=747125294]
+shape = SubResource("SphereShape3D_o2j28")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

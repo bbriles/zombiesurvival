@@ -112,6 +112,7 @@ shadow_blur = 3.0
 
 [node name="BrightLight" type="DirectionalLight3D" parent="." unique_id=1393330020]
 transform = Transform3D(0.43051112, -0.88286155, -0.18765806, 0, -0.20791174, 0.9781475, -0.9025852, -0.42110342, -0.08950832, 0, 5.811947, 0)
+visible = false
 shadow_enabled = true
 shadow_blur = 3.0
 

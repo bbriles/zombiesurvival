@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c16d7h2awr5yw" path="res://models/weapons/blaster-b.glb" id="1_o6ghu"]
 [ext_resource type="Script" uid="uid://df3746yo7mi7b" path="res://objects/player/Player.cs" id="1_sllil"]
+[ext_resource type="PackedScene" uid="uid://cu3cnpw1u4xru" path="res://objects/projectiles/grenade.tscn" id="2_veo1v"]
 [ext_resource type="Texture2D" uid="uid://b0g2knum5m5x3" path="res://models/weapons/Textures/crosshair038.png" id="3_1fx2d"]
 [ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_h7ooo"]
 [ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
@@ -118,7 +119,7 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "InjuryOverlay", "DeathScreen")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "GrenadeThrowPoint", "InjuryOverlay", "DeathScreen")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_sllil")
@@ -129,6 +130,8 @@ ShootSound = NodePath("ShootAudioPlayer")
 MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
 MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
+GrenadeScene = ExtResource("2_veo1v")
+GrenadeThrowPoint = NodePath("Head/WeaponPivot/ThrowPoint")
 InjuryOverlay = NodePath("CanvasLayer/InjuryOverlay")
 DeathScreen = NodePath("CanvasLayer/DeathScreen")
 
@@ -169,6 +172,9 @@ light_color = Color(1, 1, 0.40392157, 1)
 light_energy = 0.5
 light_indirect_energy = 0.5
 spot_range = 3.0
+
+[node name="ThrowPoint" type="Marker3D" parent="Head/WeaponPivot" unique_id=617467155]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.022364587, -0.1537708, -0.33700508)
 
 [node name="WeaponRay" type="RayCast3D" parent="Head" unique_id=1316109182]
 target_position = Vector3(0, 0, -100)

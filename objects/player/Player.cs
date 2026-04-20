@@ -41,6 +41,10 @@ public partial class Player : CharacterBody3D
 	[Export] public float BobAmplitudeX = 0.01f; // horizontal drift
 	[Export] public float BobLerpSpeed = 10.0f;  // smoothing speed
 
+	[ExportGroup("Throwing")]
+	[Export] public PackedScene GrenadeScene;
+	[Export] public Node3D GrenadeThrowPoint;
+
 	[ExportGroup("Health")]
 	[Export] public InjuryOverlay InjuryOverlay;
 	[Export] public DeathScreen DeathScreen;
@@ -150,10 +154,17 @@ public partial class Player : CharacterBody3D
 			Shoot();
 			_fireCooldown = FireRate;
 		}
+		
 		// -----------------------------------------------------------------
 		// 9. Weapon Bobbing and Sway
 		// -----------------------------------------------------------------
 		 ApplyWeaponBob((float)dt);
+		
+		// -----------------------------------------------------------------
+		// 10. Grenade Throwing
+		// -----------------------------------------------------------------
+		if (Input.IsActionJustPressed("throw"))
+			ThrowGrenade();
 	}
 
 	public void TakeDamage(float amount)
@@ -191,6 +202,20 @@ public partial class Player : CharacterBody3D
 
 		if (collider is Monster monster)
 			monster.TakeDamage(WeaponDamage, WeaponRay.GetCollisionPoint());
+	}
+
+	private void ThrowGrenade()
+	{
+		if (GrenadeScene == null || GrenadeThrowPoint == null)
+			return;
+
+		var grenade = GrenadeScene.Instantiate<Grenade>();
+        GetTree().CurrentScene.AddChild(grenade);
+
+        grenade.GlobalTransform = GrenadeThrowPoint.GlobalTransform;
+		grenade.Throw(-GrenadeThrowPoint.GlobalTransform.Basis.Z); // Forward direction of the throw point
+        
+		GD.Print($"{Name} throws a grenade!");
 	}
 
 	private void ApplyWeaponBob(float dt)

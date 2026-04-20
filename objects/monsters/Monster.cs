@@ -254,6 +254,12 @@ public partial class Monster : RigidBody3D
         GD.Print($"{Name} has died.");
     }
 
+    public void ApplyKnockback(Vector3 sourcePosition, float force)
+    {
+        Vector3 direction = (GlobalPosition - sourcePosition).Normalized();
+		ApplyCentralImpulse(direction * force);
+    }
+
     /// <summary>Rotate the monster to face the player on the Y axis only.</summary>
     private void FacePlayer()
     {
