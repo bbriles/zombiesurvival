@@ -22,6 +22,8 @@ script = ExtResource("1_i7h5o")
 ExplosionMesh = NodePath("smoke2/smoke")
 ExplosionLight = NodePath("OmniLight3D")
 ExplosionCollision = NodePath("CollisionShape3D")
+ExplosionDamage = 0.0
+KnockbackForce = 25.0
 
 [node name="smoke2" parent="." unique_id=203371660 instance=ExtResource("1_v3de2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08657265, 0)

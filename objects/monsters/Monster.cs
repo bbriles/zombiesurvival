@@ -122,7 +122,7 @@ public partial class Monster : RigidBody3D
         }
 
         // Face the player in most states except...
-        if(_state != State.Idle && _state != State.Dead)
+        if(_state != State.Idle && _state != State.Dead && _state != State.Hurt)
             FacePlayer();
     }
 
@@ -256,8 +256,16 @@ public partial class Monster : RigidBody3D
 
     public void ApplyKnockback(Vector3 sourcePosition, float force)
     {
-        Vector3 direction = (GlobalPosition - sourcePosition).Normalized();
-		ApplyCentralImpulse(direction * force);
+        // Only apply horizontal knockback
+        Vector3 direction = (GlobalPosition - sourcePosition);
+        direction.Y = 0f;
+
+        if (direction.LengthSquared() < 0.001f)
+            return;
+
+        direction = direction.Normalized();
+        LinearVelocity += direction * force;
+        GD.Print($"{Name} is in state {_state} and receives knockback with force {force} from direction {direction}.");
     }
 
     /// <summary>Rotate the monster to face the player on the Y axis only.</summary>

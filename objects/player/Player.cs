@@ -51,6 +51,8 @@ public partial class Player : CharacterBody3D
 	[Export] public float MaxHealth = 100f;
 	[Export] public float CurrentHealth = 100f;
 	[Export] public float HealAmount = 5f; // amount to heal on each timer tick
+	[ExportGroup("Items")]
+	[Export] public int GrenadeCount = 0;
 
 	private float _gravity;
 	private float _fireCooldown = 0f;
@@ -245,6 +247,25 @@ public partial class Player : CharacterBody3D
 
 		// Lerp for smooth transition in and out of bobbing
 		WeaponPivot.Position = WeaponPivot.Position.Lerp(targetPosition, dt * BobLerpSpeed);
+	}
+
+	public void PickupItem(Item item)
+	{
+		switch (item.Type)
+		{
+			case Item.ItemType.Grenade:
+				GrenadeCount += item.Amount;
+				GD.Print($"{Name} picked up {item.Amount} grenades! Total: {GrenadeCount}");
+				break;
+			case Item.ItemType.HealthPack:
+				CurrentHealth = Mathf.Clamp(CurrentHealth + item.Amount, 0f, MaxHealth);
+				InjuryOverlay.Heal(item.Amount / MaxHealth); // Convert heal amount to severity (0.0 to 1.0)
+				GD.Print($"{Name} picked up a health pack! Healed {item.Amount} health. Current health: {CurrentHealth}");
+				break;
+			default:
+				GD.Print($"{Name} picked up an unknown item: {item.Type}");
+				break;			
+		}
 	}
 
 	public void OnHealTimerTimeOut()

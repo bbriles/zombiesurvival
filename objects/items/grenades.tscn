@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bnqu1jtvcvwuk"]
+
+[ext_resource type="PackedScene" uid="uid://wcmehgwus7bh" path="res://models/projectiles/grenade-b.glb" id="1_cg40i"]
+[ext_resource type="Script" uid="uid://dqsbadjnyr3bn" path="res://objects/items/Item.cs" id="1_l11mk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l11mk"]
+
+[sub_resource type="Animation" id="Animation_3vixr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelHolder/grenade-b2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelHolder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ly8sf"]
+_data = {
+&"RESET": SubResource("Animation_3vixr")
+}
+
+[sub_resource type="Animation" id="Animation_edsr6"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ModelHolder/grenade-b2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ModelHolder:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w2wqi"]
+_data = {
+&"idle": SubResource("Animation_edsr6")
+}
+
+[node name="Grenades" type="Area3D" unique_id=1124949630]
+collision_layer = 32
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_l11mk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=802639124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.090969175, 0)
+shape = SubResource("SphereShape3D_l11mk")
+
+[node name="ModelHolder" type="Node3D" parent="." unique_id=1756815684]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
+
+[node name="grenade-b2" parent="ModelHolder" unique_id=132334192 instance=ExtResource("1_cg40i")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1933366397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10537103, 0)
+light_color = Color(1, 1, 0.8392157, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_size = 0.163
+omni_range = 0.72871006
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=561844338]
+libraries/ = SubResource("AnimationLibrary_ly8sf")
+libraries/items = SubResource("AnimationLibrary_w2wqi")
+autoplay = &"items/idle"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1062086926]
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

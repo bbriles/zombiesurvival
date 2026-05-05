@@ -85,6 +85,7 @@ throw={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="Enemy Projectiles"
 3d_physics/layer_5="Player Projectiles"
+3d_physics/layer_6="Items"
 
 [physics]
 
