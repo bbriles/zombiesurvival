@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dnxl3ogb2x0xl"]
+
+[ext_resource type="Script" uid="uid://bpclfb0ii8m32" path="res://ui/Hud.cs" id="1_jun1y"]
+
+[node name="HUD" type="Control" unique_id=71392340 node_paths=PackedStringArray("GrenadeCountLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jun1y")
+GrenadeCountLabel = NodePath("HBoxContainer/GrenadeCountBox/GrenadeCount")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1824582042]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GrenadeCountBox" type="HBoxContainer" parent="HBoxContainer" unique_id=1721134837]
+layout_mode = 2
+
+[node name="GrenadeLabel" type="Label" parent="HBoxContainer/GrenadeCountBox" unique_id=279034669]
+layout_mode = 2
+text = "Grenades"
+
+[node name="GrenadeCount" type="Label" parent="HBoxContainer/GrenadeCountBox" unique_id=1040927314]
+layout_mode = 2
+text = "0"

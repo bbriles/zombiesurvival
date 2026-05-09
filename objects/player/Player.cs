@@ -53,6 +53,7 @@ public partial class Player : CharacterBody3D
 	[Export] public float HealAmount = 5f; // amount to heal on each timer tick
 	[ExportGroup("Items")]
 	[Export] public int GrenadeCount = 0;
+	[Signal] public delegate void ItemPickupEventHandler();
 
 	private float _gravity;
 	private float _fireCooldown = 0f;
@@ -69,6 +70,9 @@ public partial class Player : CharacterBody3D
 
 		// Cache the resting position of the weapon
 		_initialWeaponPosition = WeaponPivot.Position;
+
+		if(GrenadeScene == null)
+			GD.PrintErr("GrenadeScene is not assigned! Grenade throwing will not work.");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -208,7 +212,13 @@ public partial class Player : CharacterBody3D
 
 	private void ThrowGrenade()
 	{
-		if (GrenadeScene == null || GrenadeThrowPoint == null)
+		if(GrenadeScene == null)
+		{
+			GD.PrintErr("GrenadeScene is not assigned!");
+			return;
+		}
+		GD.Print($"{Name} attempts to throw a grenade...");		
+		if (GrenadeScene == null || GrenadeThrowPoint == null || GrenadeCount <= 0)
 			return;
 
 		var grenade = GrenadeScene.Instantiate<Grenade>();
@@ -217,6 +227,7 @@ public partial class Player : CharacterBody3D
         grenade.GlobalTransform = GrenadeThrowPoint.GlobalTransform;
 		grenade.Throw(-GrenadeThrowPoint.GlobalTransform.Basis.Z); // Forward direction of the throw point
         
+		GrenadeCount--;
 		GD.Print($"{Name} throws a grenade!");
 	}
 
@@ -266,6 +277,7 @@ public partial class Player : CharacterBody3D
 				GD.Print($"{Name} picked up an unknown item: {item.Type}");
 				break;			
 		}
+		EmitSignal(SignalName.ItemPickup);
 	}
 
 	public void OnHealTimerTimeOut()

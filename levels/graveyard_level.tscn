@@ -47,12 +47,12 @@
 [ext_resource type="PackedScene" uid="uid://d14w42ngcffxv" path="res://models/graveyard-kit/detail-bowl.glb" id="45_3ypon"]
 [ext_resource type="PackedScene" uid="uid://ce60tv0sukl0n" path="res://models/graveyard-kit/shovel.glb" id="45_s0do1"]
 [ext_resource type="PackedScene" uid="uid://copvt3gxyrrp2" path="res://models/graveyard-kit/detail-chalice.glb" id="46_nn62f"]
-[ext_resource type="PackedScene" uid="uid://bnqu1jtvcvwuk" path="res://objects/items/grenades.tscn" id="46_u1dja"]
 [ext_resource type="PackedScene" uid="uid://4f67d8cwwgrj" path="res://models/graveyard-kit/detail-plate.glb" id="47_tki4a"]
 [ext_resource type="PackedScene" uid="uid://bg716f0d7cmr7" path="res://objects/graveyard/lantern_candle.tscn" id="48_3ypon"]
 [ext_resource type="PackedScene" uid="uid://mesxuxtx4loa" path="res://objects/graveyard/cross_column.tscn" id="51_b2pni"]
 [ext_resource type="PackedScene" uid="uid://bpk1u0utq63dd" path="res://objects/monsters/ghost.tscn" id="51_vqg3s"]
 [ext_resource type="PackedScene" uid="uid://dgp1x3el0dmyh" path="res://objects/graveyard/altar_stone.tscn" id="52_cxw65"]
+[ext_resource type="PackedScene" uid="uid://dnxl3ogb2x0xl" path="res://ui/Hud.tscn" id="53_2a4ue"]
 [ext_resource type="PackedScene" uid="uid://m7s57iaaplpn" path="res://objects/graveyard/tractor.tscn" id="53_cxw65"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
@@ -118,6 +118,7 @@ shadow_blur = 3.0
 
 [node name="Player" parent="." unique_id=820153746 instance=ExtResource("2_c62yr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.1430025, 0, 0)
+GrenadeScene = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1773977596]
 environment = SubResource("Environment_7c752")
@@ -1104,9 +1105,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.1
 [node name="cross-column2" parent="Objects" unique_id=1275608561 instance=ExtResource("51_b2pni")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.100002, 0, -9.999999)
 
-[node name="Grenades" parent="Objects" unique_id=1124949630 instance=ExtResource("46_u1dja")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.930101, 0.4974165, -11.09411)
-
 [node name="GraveKeeper" parent="." unique_id=556584128 instance=ExtResource("38_wlagu")]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, -2.4, 0, -0.7)
 
@@ -1187,7 +1185,10 @@ transform = Transform3D(0.88322604, 0, 0.46894753, 0, 1, 0, -0.46894753, 0, 0.88
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1554221407]
 
+[node name="HUD" parent="CanvasLayer" unique_id=71392340 instance=ExtResource("53_2a4ue")]
+
 [node name="PauseScreen" parent="CanvasLayer" unique_id=709586517 instance=ExtResource("44_c62yr")]
+visible = false
 
 [node name="Ghost2" parent="." unique_id=1961716468 instance=ExtResource("51_vqg3s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.991297, 0.005432844, -11.885652)

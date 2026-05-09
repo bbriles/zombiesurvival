@@ -75,6 +75,7 @@ collision_layer = 32
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_l11mk")
+Amount = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=802639124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.090969175, 0)

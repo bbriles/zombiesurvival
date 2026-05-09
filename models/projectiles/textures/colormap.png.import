@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://orn5iglvxw4n"
-path.s3tc="res://.godot/imported/colormap.png-312078d7f77faf521f046d254c4cca4d.s3tc.ctex"
+path.s3tc="res://.godot/imported/colormap.png-be64c449c8dc5c784ca18a69d163b18b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/projectiles/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-312078d7f77faf521f046d254c4cca4d.s3tc.ctex"]
+source_file="res://models/projectiles/textures/colormap.png"
+dest_files=["res://.godot/imported/colormap.png-be64c449c8dc5c784ca18a69d163b18b.s3tc.ctex"]
 
 [params]
 
