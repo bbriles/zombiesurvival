@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c16d7h2awr5yw" path="res://models/weapons/blaster-b.glb" id="1_o6ghu"]
 [ext_resource type="Script" uid="uid://df3746yo7mi7b" path="res://objects/player/Player.cs" id="1_sllil"]
-[ext_resource type="PackedScene" uid="uid://cu3cnpw1u4xru" path="res://objects/projectiles/grenade.tscn" id="2_veo1v"]
 [ext_resource type="Texture2D" uid="uid://b0g2knum5m5x3" path="res://models/weapons/Textures/crosshair038.png" id="3_1fx2d"]
 [ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_h7ooo"]
+[ext_resource type="PackedScene" uid="uid://cu3cnpw1u4xru" path="res://objects/projectiles/grenade.tscn" id="3_n1h8g"]
 [ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
 [ext_resource type="Shader" uid="uid://tyj5likds60j" path="res://shaders/injury_overlay.gdshader" id="5_lalkq"]
 [ext_resource type="Script" uid="uid://bhyo3fkh0mdsh" path="res://objects/player/InjuryOverlay.cs" id="6_t2uaq"]
@@ -119,7 +119,7 @@ _data = {
 &"shoot": SubResource("Animation_h7ooo")
 }
 
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "GrenadeThrowPoint", "InjuryOverlay", "DeathScreen")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "ThrowPoint", "InjuryOverlay", "DeathScreen")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_sllil")
@@ -130,8 +130,8 @@ ShootSound = NodePath("ShootAudioPlayer")
 MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
 MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("Head/WeaponRay")
-GrenadeScene = ExtResource("2_veo1v")
-GrenadeThrowPoint = NodePath("Head/WeaponPivot/ThrowPoint")
+ThrowObjectScene = ExtResource("3_n1h8g")
+ThrowPoint = NodePath("Head/WeaponPivot/ThrowPoint")
 InjuryOverlay = NodePath("CanvasLayer/InjuryOverlay")
 DeathScreen = NodePath("CanvasLayer/DeathScreen")
 

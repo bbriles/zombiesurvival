@@ -9,6 +9,7 @@ public partial class Hud : Control
 	public override void _Ready()
 	{
 		GameManager.Player.ItemPickup += OnPlayerItemPickup;
+		GameManager.Player.ItemUsed += OnPlayerItemUsed; // Update grenade count on use as well
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,6 +18,16 @@ public partial class Hud : Control
 	}
 
 	private void OnPlayerItemPickup()
+	{
+		RefreshValues();
+	}
+
+	private void OnPlayerItemUsed()
+	{
+		RefreshValues();
+	}
+
+	private void RefreshValues()
 	{
 		if(GrenadeCountLabel != null)
 		{

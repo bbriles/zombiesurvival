@@ -2,15 +2,6 @@ using Godot;
 
 /// <summary>
 /// DOOM-style player controller for a CharacterBody3D.
-///
-/// Controls:
-///   W / Up Arrow      — Move forward
-///   S / Down Arrow    — Move backward
-///   A / Left Arrow    — Turn left  (rotate camera/body on Y axis)
-///   D / Right Arrow   — Turn right (rotate camera/body on Y axis)
-///   Alt + A / Alt + D — Strafe left / right
-///   Space             — Jump
-///   Shift             — Run
 /// </summary>
 public partial class Player : CharacterBody3D
 {
@@ -42,8 +33,8 @@ public partial class Player : CharacterBody3D
 	[Export] public float BobLerpSpeed = 10.0f;  // smoothing speed
 
 	[ExportGroup("Throwing")]
-	[Export] public PackedScene GrenadeScene;
-	[Export] public Node3D GrenadeThrowPoint;
+	[Export] public PackedScene ThrowObjectScene;
+	[Export] public Node3D ThrowPoint;
 
 	[ExportGroup("Health")]
 	[Export] public InjuryOverlay InjuryOverlay;
@@ -54,6 +45,7 @@ public partial class Player : CharacterBody3D
 	[ExportGroup("Items")]
 	[Export] public int GrenadeCount = 0;
 	[Signal] public delegate void ItemPickupEventHandler();
+	[Signal] public delegate void ItemUsedEventHandler();
 
 	private float _gravity;
 	private float _fireCooldown = 0f;
@@ -70,9 +62,6 @@ public partial class Player : CharacterBody3D
 
 		// Cache the resting position of the weapon
 		_initialWeaponPosition = WeaponPivot.Position;
-
-		if(GrenadeScene == null)
-			GD.PrintErr("GrenadeScene is not assigned! Grenade throwing will not work.");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -212,22 +201,23 @@ public partial class Player : CharacterBody3D
 
 	private void ThrowGrenade()
 	{
-		if(GrenadeScene == null)
+		if(ThrowObjectScene == null)
 		{
-			GD.PrintErr("GrenadeScene is not assigned!");
+			GD.PrintErr("ThrowObjectScene is not assigned!");
 			return;
 		}
 		GD.Print($"{Name} attempts to throw a grenade...");		
-		if (GrenadeScene == null || GrenadeThrowPoint == null || GrenadeCount <= 0)
+		if (ThrowObjectScene == null || ThrowPoint == null || GrenadeCount <= 0)
 			return;
 
-		var grenade = GrenadeScene.Instantiate<Grenade>();
+		var grenade = ThrowObjectScene.Instantiate<Grenade>();
         GetTree().CurrentScene.AddChild(grenade);
 
-        grenade.GlobalTransform = GrenadeThrowPoint.GlobalTransform;
-		grenade.Throw(-GrenadeThrowPoint.GlobalTransform.Basis.Z); // Forward direction of the throw point
+        grenade.GlobalTransform = ThrowPoint.GlobalTransform;
+		grenade.Throw(-ThrowPoint.GlobalTransform.Basis.Z); // Forward direction of the throw point
         
 		GrenadeCount--;
+		EmitSignal(SignalName.ItemUsed);
 		GD.Print($"{Name} throws a grenade!");
 	}
 

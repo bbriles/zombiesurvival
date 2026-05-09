@@ -54,6 +54,7 @@
 [ext_resource type="PackedScene" uid="uid://dgp1x3el0dmyh" path="res://objects/graveyard/altar_stone.tscn" id="52_cxw65"]
 [ext_resource type="PackedScene" uid="uid://dnxl3ogb2x0xl" path="res://ui/Hud.tscn" id="53_2a4ue"]
 [ext_resource type="PackedScene" uid="uid://m7s57iaaplpn" path="res://objects/graveyard/tractor.tscn" id="53_cxw65"]
+[ext_resource type="PackedScene" uid="uid://bnqu1jtvcvwuk" path="res://objects/items/grenades.tscn" id="55_2a4ue"]
 
 [sub_resource type="Environment" id="Environment_7c752"]
 background_mode = 1
@@ -118,7 +119,6 @@ shadow_blur = 3.0
 
 [node name="Player" parent="." unique_id=820153746 instance=ExtResource("2_c62yr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.1430025, 0, 0)
-GrenadeScene = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1773977596]
 environment = SubResource("Environment_7c752")
@@ -1195,3 +1195,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.991297, 0.005432844, -11.8
 
 [node name="tractor" parent="." unique_id=1268686564 instance=ExtResource("53_cxw65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.73356, 0.005432844, -0.15773892)
+
+[node name="Items" type="Node3D" parent="." unique_id=544774446]
+
+[node name="Grenades" parent="Items" unique_id=1124949630 instance=ExtResource("55_2a4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.922268, 0.5571813, -11.091887)
+
+[node name="Grenades2" parent="Items" unique_id=1277405646 instance=ExtResource("55_2a4ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6587005, 0.41118622, 0.62187064)
