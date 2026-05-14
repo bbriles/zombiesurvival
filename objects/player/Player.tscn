@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dqr3k70ws2clj"]
 
-[ext_resource type="PackedScene" uid="uid://c16d7h2awr5yw" path="res://models/weapons/blaster-b.glb" id="1_o6ghu"]
 [ext_resource type="Script" uid="uid://df3746yo7mi7b" path="res://objects/player/Player.cs" id="1_sllil"]
 [ext_resource type="Texture2D" uid="uid://b0g2knum5m5x3" path="res://models/weapons/Textures/crosshair038.png" id="3_1fx2d"]
-[ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_h7ooo"]
 [ext_resource type="PackedScene" uid="uid://cu3cnpw1u4xru" path="res://objects/projectiles/grenade.tscn" id="3_n1h8g"]
-[ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_6o7ef"]
+[ext_resource type="PackedScene" uid="uid://lmuskk3jpt2k" path="res://objects/weapons/pistol.tscn" id="3_t2uaq"]
 [ext_resource type="Shader" uid="uid://tyj5likds60j" path="res://shaders/injury_overlay.gdshader" id="5_lalkq"]
 [ext_resource type="Script" uid="uid://bhyo3fkh0mdsh" path="res://objects/player/InjuryOverlay.cs" id="6_t2uaq"]
 [ext_resource type="PackedScene" uid="uid://bij7uhxbpoubl" path="res://ui/DeathScreen.tscn" id="7_45d0k"]
@@ -14,124 +12,20 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o6ghu"]
 
-[sub_resource type="Curve" id="Curve_h7ooo"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_lalkq"]
-curve = SubResource("Curve_h7ooo")
-
-[sub_resource type="Curve" id="Curve_t2uaq"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.17673385), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_45d0k"]
-curve = SubResource("Curve_t2uaq")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lalkq"]
-direction = Vector3(0, 0, 0)
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_45d0k")
-alpha_curve = SubResource("CurveTexture_lalkq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lalkq"]
-transparency = 1
-albedo_color = Color(1, 1, 0.2901961, 1)
-albedo_texture = ExtResource("3_h7ooo")
-emission_enabled = true
-emission = Color(0.8352941, 0.972549, 0, 1)
-emission_energy_multiplier = 0.1
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_t2uaq"]
-material = SubResource("StandardMaterial3D_lalkq")
-flip_faces = true
-size = Vector2(0.5, 0.5)
-center_offset = Vector3(0, 0, 0.15)
-orientation = 0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t2uaq"]
 shader = ExtResource("5_lalkq")
 shader_parameter/damage_amount = 0.0
 shader_parameter/vignette_color = Color(0.6, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_1fx2d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/WeaponPivot/Weapon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.09656907, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/WeaponPivot/Weapon:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.2761488, -0.16103578, -0.3107285)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6o7ef"]
-_data = {
-&"RESET": SubResource("Animation_1fx2d")
-}
-
-[sub_resource type="Animation" id="Animation_h7ooo"]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/WeaponPivot/Weapon:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.09656907, 0), Vector3(0.12637796, 0.09734785, 0.012308184), Vector3(0, 0.09656907, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/WeaponPivot/Weapon:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.2761488, -0.16103578, -0.3107285), Vector3(0.2761488, -0.16103578, -0.3057024), Vector3(0.2761488, -0.16103578, -0.3107285)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lalkq"]
-_data = {
-&"shoot": SubResource("Animation_h7ooo")
-}
-
-[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponAnim", "WeaponPivot", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay", "ThrowPoint", "InjuryOverlay", "DeathScreen")]
+[node name="Player" type="CharacterBody3D" unique_id=820153746 node_paths=PackedStringArray("Camera", "WeaponPivot", "CurrentWeapon", "ThrowPoint", "InjuryOverlay", "DeathScreen")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_sllil")
 Camera = NodePath("Head/Camera3D")
-WeaponAnim = NodePath("WeaponAnimationPlayer")
 WeaponPivot = NodePath("Head/WeaponPivot")
-ShootSound = NodePath("ShootAudioPlayer")
-MuzzleFlash = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlash")
-MuzzleFlashLight = NodePath("Head/WeaponPivot/MuzzlePoint/MuzzleFlashLight")
-WeaponRay = NodePath("Head/WeaponRay")
+CurrentWeapon = NodePath("Head/WeaponPivot/Pistol")
 ThrowObjectScene = ExtResource("3_n1h8g")
-ThrowPoint = NodePath("Head/WeaponPivot/ThrowPoint")
+ThrowPoint = NodePath("Head/ThrowPoint")
 InjuryOverlay = NodePath("CanvasLayer/InjuryOverlay")
 DeathScreen = NodePath("CanvasLayer/DeathScreen")
 
@@ -150,35 +44,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63709164, 0)
 
 [node name="WeaponPivot" type="Node3D" parent="Head" unique_id=474927095]
 
-[node name="Weapon" parent="Head/WeaponPivot" unique_id=1471396285 instance=ExtResource("1_o6ghu")]
-transform = Transform3D(0.4976704, 0, 0.04820952, 0, 0.5, 0, -0.048209522, 0, 0.49767038, 0.2761488, -0.16103578, -0.3107285)
+[node name="Pistol" parent="Head/WeaponPivot" unique_id=669679147 instance=ExtResource("3_t2uaq")]
 
-[node name="MuzzlePoint" type="Marker3D" parent="Head/WeaponPivot" unique_id=827856383]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2615139, -0.1537708, -0.4473514)
-
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/WeaponPivot/MuzzlePoint" unique_id=998903420]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0043231547, -0.250812)
-emitting = false
-amount = 1
-lifetime = 0.01
-one_shot = true
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_lalkq")
-draw_pass_1 = SubResource("PlaneMesh_t2uaq")
-
-[node name="MuzzleFlashLight" type="SpotLight3D" parent="Head/WeaponPivot/MuzzlePoint" unique_id=903345650]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.11044514)
-light_color = Color(1, 1, 0.40392157, 1)
-light_energy = 0.5
-light_indirect_energy = 0.5
-spot_range = 3.0
-
-[node name="ThrowPoint" type="Marker3D" parent="Head/WeaponPivot" unique_id=617467155]
+[node name="ThrowPoint" type="Marker3D" parent="Head" unique_id=1696122010]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.022364587, -0.1537708, -0.33700508)
-
-[node name="WeaponRay" type="RayCast3D" parent="Head" unique_id=1316109182]
-target_position = Vector3(0, 0, -100)
-collision_mask = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1234037841]
 
@@ -210,13 +79,6 @@ script = ExtResource("6_t2uaq")
 
 [node name="DeathScreen" parent="CanvasLayer" unique_id=1101984776 instance=ExtResource("7_45d0k")]
 visible = false
-
-[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1923491865]
-libraries/ = SubResource("AnimationLibrary_6o7ef")
-libraries/custom = SubResource("AnimationLibrary_lalkq")
-
-[node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=331635567]
-stream = ExtResource("4_6o7ef")
 
 [node name="HealTimer" type="Timer" parent="." unique_id=1940526795]
 autostart = true

@@ -6,7 +6,6 @@ using Godot;
 public partial class Player : CharacterBody3D
 {
 	[Export] public Camera3D Camera;
-	[Export] public AnimationPlayer WeaponAnim;
 
 	[ExportGroup("Movement")]
 	[Export] public float WalkSpeed    = 2.5f;
@@ -20,17 +19,7 @@ public partial class Player : CharacterBody3D
 
 	[ExportGroup("Shooting")]
 	[Export] public Node3D WeaponPivot;
-	[Export] public AudioStreamPlayer ShootSound;
-	[Export] public GpuParticles3D MuzzleFlash;
-	[Export] public SpotLight3D MuzzleFlashLight;
-	[Export] public float MuzzleFlashLightLength = 0.1f;
-	[Export] public RayCast3D WeaponRay;
-	[Export] public float WeaponDamage = 25f;
-	[Export] public float FireRate = 0.25f;  // seconds between shots
-	[Export] public float BobFrequency = 1.5f;   // cycles per second
-	[Export] public float BobAmplitudeY = 0.02f; // vertical height
-	[Export] public float BobAmplitudeX = 0.01f; // horizontal drift
-	[Export] public float BobLerpSpeed = 10.0f;  // smoothing speed
+	[Export] public Weapon CurrentWeapon;
 
 	[ExportGroup("Throwing")]
 	[Export] public PackedScene ThrowObjectScene;
@@ -48,10 +37,6 @@ public partial class Player : CharacterBody3D
 	[Signal] public delegate void ItemUsedEventHandler();
 
 	private float _gravity;
-	private float _fireCooldown = 0f;
-	private float _lightCounter = 0f;
-	private Vector3 _initialWeaponPosition;
-	private float _bobTime = 0f;
 
 	public override void _Ready()
 	{
@@ -60,8 +45,7 @@ public partial class Player : CharacterBody3D
 		// Cache project gravity so we don't call the server every frame.
 		_gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
 
-		// Cache the resting position of the weapon
-		_initialWeaponPosition = WeaponPivot.Position;
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -138,25 +122,15 @@ public partial class Player : CharacterBody3D
 		// -----------------------------------------------------------------
 		// 8. Shooting
 		// -----------------------------------------------------------------
-		if (_fireCooldown > 0f)
-			_fireCooldown -= dt;
-		if (_lightCounter > 0f)
-			_lightCounter -= dt;
-		else if (MuzzleFlashLight != null && MuzzleFlashLight.Visible)
-			MuzzleFlashLight.Visible = false;
-		if (Input.IsActionJustPressed("shoot") && _fireCooldown <= 0f)
+		if (Input.IsActionJustPressed("shoot") && CurrentWeapon != null)
 		{
-			Shoot();
-			_fireCooldown = FireRate;
+			CurrentWeapon.Shoot();
 		}
 		
-		// -----------------------------------------------------------------
-		// 9. Weapon Bobbing and Sway
-		// -----------------------------------------------------------------
-		 ApplyWeaponBob((float)dt);
+		ApplyWeaponBob(dt);
 		
 		// -----------------------------------------------------------------
-		// 10. Grenade Throwing
+		// 9. Grenade Throwing
 		// -----------------------------------------------------------------
 		if (Input.IsActionJustPressed("throw"))
 			ThrowGrenade();
@@ -176,27 +150,6 @@ public partial class Player : CharacterBody3D
 	{
 		// TODO: play sound, etc.
 		DeathScreen.ShowDeathScreen();
-	}
-
-	private void Shoot()
-	{
-		WeaponAnim?.Play("custom/shoot");
-		ShootSound?.Play();
-
-		if(MuzzleFlash != null && MuzzleFlashLight != null)
-		{ 
-			MuzzleFlash.Emitting = true;
-			MuzzleFlashLight.Visible = true;
-			_lightCounter = MuzzleFlashLightLength;
-		}
-		
-		if (WeaponRay == null || !WeaponRay.IsColliding())
-			return;
-
-		Node collider = WeaponRay.GetCollider() as Node;
-
-		if (collider is Monster monster)
-			monster.TakeDamage(WeaponDamage, WeaponRay.GetCollisionPoint());
 	}
 
 	private void ThrowGrenade()
@@ -221,34 +174,7 @@ public partial class Player : CharacterBody3D
 		GD.Print($"{Name} throws a grenade!");
 	}
 
-	private void ApplyWeaponBob(float dt)
-	{
-		// Only bob on horizontal movement
-		float speed = new Vector2(Velocity.X, Velocity.Z).Length();
-		bool isMoving = speed > 0.1f && IsOnFloor();
-
-		Vector3 targetPosition;
-
-		if (isMoving)
-		{
-			_bobTime += dt * BobFrequency * Mathf.Pi * 2f;
-
-			float bobY = Mathf.Sin(_bobTime) * BobAmplitudeY;
-			// X uses a doubled frequency for a figure-8 style sway
-			float bobX = Mathf.Sin(_bobTime * 0.5f) * BobAmplitudeX;
-
-			targetPosition = _initialWeaponPosition + new Vector3(bobX, bobY, 0f);
-		}
-		else
-		{
-			// Smoothly reset _bobTime toward the nearest full cycle to avoid snapping
-			_bobTime = Mathf.Lerp(_bobTime, Mathf.Round(_bobTime / (Mathf.Pi * 2f)) * Mathf.Pi * 2f, dt * BobLerpSpeed);
-			targetPosition = _initialWeaponPosition;
-		}
-
-		// Lerp for smooth transition in and out of bobbing
-		WeaponPivot.Position = WeaponPivot.Position.Lerp(targetPosition, dt * BobLerpSpeed);
-	}
+	
 
 	public void PickupItem(Item item)
 	{
@@ -276,4 +202,14 @@ public partial class Player : CharacterBody3D
 		InjuryOverlay.Heal(HealAmount / MaxHealth); // Convert heal amount to severity (0.0 to 1.0)	
 	}
 
+	private void ApplyWeaponBob(float dt)
+	{
+		if (CurrentWeapon == null)
+			return;
+
+		float speed = new Vector2(Velocity.X, Velocity.Z).Length();
+		bool isMoving = speed > 0.1f && IsOnFloor();
+
+		CurrentWeapon?.ApplyWeaponBob(isMoving, dt);
+	}
 }
