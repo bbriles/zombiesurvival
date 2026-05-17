@@ -6,7 +6,7 @@ public partial class Weapon : Node3D
 	[Export] public AnimationPlayer WeaponAnim;
 	[Export] public AudioStreamPlayer ShootSound;
 	[Export] public GpuParticles3D MuzzleFlash;
-	[Export] public SpotLight3D MuzzleFlashLight;
+	[Export] public OmniLight3D MuzzleFlashLight;
 	[Export] public float MuzzleFlashLightLength = 0.1f;
 	[Export] public RayCast3D WeaponRay;
 	[Export] public float WeaponDamage = 25f;

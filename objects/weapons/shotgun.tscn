@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://lmuskk3jpt2k"]
+[gd_scene format=3 uid="uid://cf0adw2ow3jfw"]
 
-[ext_resource type="Script" uid="uid://23l5d2hpiauj" path="res://objects/weapons/Weapon.cs" id="1_r4n6j"]
-[ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="2_r4n6j"]
-[ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="3_6ltjd"]
-[ext_resource type="PackedScene" uid="uid://b024vg42y40je" path="res://models/weapons/pistolSilencer.glb" id="3_lqewc"]
+[ext_resource type="Script" uid="uid://23l5d2hpiauj" path="res://objects/weapons/Weapon.cs" id="1_c1xub"]
+[ext_resource type="PackedScene" uid="uid://dis2ujluu2l42" path="res://models/weapons/shotgun.glb" id="2_c1xub"]
+[ext_resource type="Texture2D" uid="uid://3my85irw364c" path="res://particles/muzzle_04.png" id="3_6cx6j"]
+[ext_resource type="AudioStream" uid="uid://5hyvlqelqb7u" path="res://objects/weapons/shoot_01.wav" id="4_rekcw"]
 
 [sub_resource type="Curve" id="Curve_lqewc"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -29,7 +29,7 @@ alpha_curve = SubResource("CurveTexture_lalkq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lalkq"]
 transparency = 1
 albedo_color = Color(1, 1, 0.2901961, 1)
-albedo_texture = ExtResource("2_r4n6j")
+albedo_texture = ExtResource("3_6cx6j")
 emission_enabled = true
 emission = Color(0.8352941, 0.972549, 0, 1)
 emission_energy_multiplier = 0.1
@@ -43,30 +43,6 @@ orientation = 0
 
 [sub_resource type="Animation" id="Animation_1fx2d"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponModel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.09656907, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponModel:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.2761488, -0.16103578, -0.3107285)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0ck3"]
 _data = {
@@ -88,46 +64,34 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.09656907, 0), Vector3(0.12637796, 0.09734785, 0.012308184), Vector3(0, 0.09656907, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_r4n6j"]
-resource_name = "shoot2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponModel:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ia1qk"]
 _data = {
-&"shoot": SubResource("Animation_h7ooo"),
-&"shoot2": SubResource("Animation_r4n6j")
+&"shoot": SubResource("Animation_h7ooo")
 }
 
 [node name="Weapon" type="Node3D" unique_id=669679147 node_paths=PackedStringArray("WeaponAnim", "ShootSound", "MuzzleFlash", "MuzzleFlashLight", "WeaponRay")]
-script = ExtResource("1_r4n6j")
+script = ExtResource("1_c1xub")
 WeaponAnim = NodePath("WeaponAnimationPlayer")
 ShootSound = NodePath("ShootAudioPlayer")
 MuzzleFlash = NodePath("MuzzlePoint/MuzzleFlash")
 MuzzleFlashLight = NodePath("MuzzlePoint/MuzzleFlashLight")
 WeaponRay = NodePath("WeaponRay")
 
-[node name="WeaponModel" parent="." unique_id=500273511 instance=ExtResource("3_lqewc")]
-transform = Transform3D(0.49845865, 0, 0.03922955, 0, 0.5, 0, -0.03922955, 0, 0.49845865, 0.2761488, -0.24985218, -0.34256008)
+[node name="WeaponModel" parent="." unique_id=167142637 instance=ExtResource("2_c1xub")]
+transform = Transform3D(0.4976704, 0, 0.048209522, 0, 0.5, 0, -0.048209522, 0, 0.4976704, 0.26529762, -0.2104662, -0.334329)
 
-[node name="pistolSilencer" parent="WeaponModel" index="0" unique_id=525424917]
+[node name="shotgun" parent="WeaponModel" index="0" unique_id=1691865060]
 transform = Transform3D(-0.3828, 0, -3.346544e-08, 0, 0.3828, 0, 3.346544e-08, 0, -0.3828, 0, 0, 0)
 
+[node name="grip" parent="WeaponModel/shotgun" index="0" unique_id=1207354282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07499981, 0.14750004, 0.6383333)
+
 [node name="MuzzlePoint" type="Marker3D" parent="." unique_id=1015981372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2615139, -0.1537708, -0.4473514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25889862, -0.14226961, -0.4769822)
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="MuzzlePoint" unique_id=1800444306]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.24383575)
+visible = false
 emitting = false
 amount = 1
 lifetime = 0.01
@@ -138,6 +102,7 @@ draw_pass_1 = SubResource("PlaneMesh_mbkjo")
 
 [node name="MuzzleFlashLight" type="OmniLight3D" parent="MuzzlePoint" unique_id=2076218529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0028362274, 0.004522115, -0.0031137466)
+visible = false
 light_color = Color(1, 1, 0.40392157, 1)
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -154,6 +119,6 @@ libraries/ = SubResource("AnimationLibrary_t0ck3")
 libraries/custom = SubResource("AnimationLibrary_ia1qk")
 
 [node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=802841641]
-stream = ExtResource("3_6ltjd")
+stream = ExtResource("4_rekcw")
 
 [editable path="WeaponModel"]
